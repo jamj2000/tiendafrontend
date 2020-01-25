@@ -5,17 +5,14 @@
 
   import { setContext } from "svelte";
 
-// https://tiendapwa.herokuapp.com
 
   const URL = {
-    articulos :  "/api/articulos/",
-    clientes :   "/api/clientes/"
+    articulos :  "https://tiendabackend.herokuapp.com/api/articulos/",
+    clientes :   "https://tiendabackend.herokuapp.com/api/clientes/"
   };
 
-  // const jsonData = [];
 
   setContext("URL", URL);
-  // setContext("jsonData", jsonData);
 </script>
 
 <style>
