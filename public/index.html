@@ -1,18 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-	<meta charset='utf-8'>
-	<meta name='viewport' content='width=device-width,initial-scale=1'>
+	<meta charset="UTF-8">
 
-	<title>Svelte app</title>
+	<meta name="description" content="PWA Example">
+	<meta name="keywords" content="PWA,NodeJS,MongoDB,Express,Example,JavaScript">
+	<meta name="author" content="José Antonio Muñoz Jiménez">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="icon" type="image/png" href="/favicon.png">
+  
+	<!-- PWA: Para habilitar Progressive Web Application -->
+	<link rel="manifest" href="manifest.json">
+  
+	<!-- PWA: Añadir a pantalla de inicio para Safari en iOS -->
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-title" content="Tienda">
+	<link rel="apple-touch-icon" sizes="152x152" href="/images/icons/icon-152x152.png">
+	<meta name="msapplication-TileImage" content="/images/icons/icon-144x144.png">
+	<meta name="msapplication-TileColor" content="#fdebc9">
+  
+	<!-- Chrome, Firefox OS and Opera -->
+	<meta name="theme-color" content="#fdebc9">
+
+	<title>Tienda Frontend</title>
 
 	<link rel='icon' type='image/png' href='/favicon.png'>
 	<link rel='stylesheet' href='/global.css'>
+	<link rel='stylesheet' href='/social.css'>
 	<link rel='stylesheet' href='/build/bundle.css'>
 
 	<script defer src='/build/bundle.js'></script>
 </head>
 
 <body>
+	<noscript>
+		<p> Este sitio necesita Javascript para funcionar. </p>
+	</noscript>
+	<script>
+		// Si está soportado serviceWorker por el navegador
+		if ('serviceWorker' in navigator) {
+		  window.addEventListener('load', () => {
+			navigator.serviceWorker
+			  .register('./service-worker.js')
+			  .then(reg => console.log('[Service Worker] * Registrado.'))
+			  .catch(err => console.log(`[Service Worker] * Error: ${err}`));
+		  });
+		}
+	  </script>
+	
+	  <script src="service-worker.js"></script> <!-- Gestión de eventos del ServiceWorker -->
 </body>
 </html>
