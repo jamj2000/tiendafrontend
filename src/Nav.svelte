@@ -40,9 +40,6 @@
     justify-content: space-between;
     align-items: center;
   }
-  .item.button {
-    order: 2;
-  }
   .item {
     width: 100%;
     text-align: center;
@@ -60,11 +57,6 @@
     .logo {
       flex: 1;
     }
-    .item.button {
-      width: auto;
-      order: 1;
-      display: block;
-    }
   }
   /* PC */
   @media all and (min-width: 900px) {
@@ -78,14 +70,8 @@
     .item {
       order: 1;
     }
-    .button {
-      order: 2;
-    }
     .menu li {
       padding: 15px 10px;
-    }
-    .menu li.button {
-      padding-right: 0;
     }
   }
 </style>
