@@ -1,9 +1,9 @@
 <script>
   import { jsonData } from "./store.js";
-  import { onMount } from "svelte";
+  import { onMount, getContext } from "svelte";
 
-  export let tipo = "insertar"; // modificar, eliminar
-  export let coleccion = "articulos"; // clientes
+  export let tipo = "insertar"; // insertar, modificar, eliminar
+  export let coleccion = "articulos"; // articulos, clientes
   export let objeto = {};
   
  
@@ -11,6 +11,7 @@
   let clases = "";
   let url = "";
 
+  const URL = getContext("URL"); 
 
   onMount(() => {
     switch (tipo) {
@@ -29,10 +30,9 @@
       default:
     }
 
-    // https://tiendapwa.herokuapp.com
     switch (coleccion) {
-      case "articulos": url="/api/articulos/"; break;
-      case "clientes": url="/api/clientes/"; break;
+      case "articulos": url=URL.articulos; break;
+      case "clientes": url=URL.clientes; break;
       default:
     }
   });
