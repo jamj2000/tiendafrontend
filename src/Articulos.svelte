@@ -7,7 +7,6 @@
   import Boton from "./Boton.svelte";
 
   const URL = getContext("URL");
-  console.log(URL);
 
   let busqueda = "";
   let articulo = {};

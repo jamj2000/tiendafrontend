@@ -1,6 +1,5 @@
 <script>
   import { Link } from "svelte-routing";
-
 </script>
 
 <style>
@@ -57,18 +56,21 @@
     .logo {
       flex: 1;
     }
+    .item {
+      order: 1;
+      display: block;
+      width: auto;
+    }
   }
   /* PC */
   @media all and (min-width: 900px) {
     .item {
+      order: 1;
       display: block;
       width: auto;
     }
     .logo {
       order: 0;
-    }
-    .item {
-      order: 1;
     }
     .menu li {
       padding: 15px 10px;
