@@ -52,4 +52,3 @@
 </Router>
 <div id="OK">😊</div>
 <div id="KO">😟</div>
-<div id="prueba"></div>

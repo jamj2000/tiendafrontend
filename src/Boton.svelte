@@ -4,7 +4,7 @@
 
   export let tipo = "insertar"; // insertar, modificar, eliminar
   export let coleccion = "articulos"; // articulos, clientes
-  export let objeto = {};
+  export let documento = {};
   
  
   let handler = () => {};  
@@ -39,13 +39,13 @@
 
   function insertar() {
     if (
-      Object.keys(objeto).length > 1 &&
-      Object.values(objeto).every(x => x !== undefined && x != "")
+      Object.keys(documento).length > 1 &&
+      Object.values(documento).every(x => x !== undefined && x != "")
     ) {
       fetch(url, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(objeto)
+        body: JSON.stringify(documento)
       })
         .then(res => res.json())
         .then(data => {
@@ -57,10 +57,10 @@
   }
 
   function modificar() {
-    fetch(url + objeto._id, {
+    fetch(url + documento._id, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(objeto)
+      body: JSON.stringify(documento)
     })
       .then(res => res.json())
       .then(data => ok())
@@ -68,7 +68,7 @@
   }
 
   function eliminar() {
-    fetch(url + objeto._id, { method: "DELETE" })
+    fetch(url + documento._id, { method: "DELETE" })
       .then(res => res.json())
       .then(data => {
         $jsonData = $jsonData.filter(x => x._id !== data._id);

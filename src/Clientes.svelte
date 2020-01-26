@@ -40,7 +40,7 @@
 <div class="container">
   <Cliente bind:cliente>
     <div style="text-align: right">
-      <Boton objeto={cliente} tipo="insertar" coleccion="clientes" />
+      <Boton documento={cliente} tipo="insertar" coleccion="clientes" />
     </div>
   </Cliente>
 </div>
@@ -49,8 +49,8 @@
   {#each datos as cliente}
     <Cliente {cliente}>
       <div style="text-align: right">
-        <Boton objeto={cliente} tipo="modificar" coleccion="clientes" />
-        <Boton objeto={cliente} tipo="eliminar" coleccion="clientes" />
+        <Boton documento={cliente} tipo="modificar" coleccion="clientes" />
+        <Boton documento={cliente} tipo="eliminar" coleccion="clientes" />
       </div>
     </Cliente>
   {/each}
