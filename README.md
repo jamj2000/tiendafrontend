@@ -387,7 +387,7 @@ El componente `Contenido` será la sección principal (`main`), con las rutas y 
 
 **Usando Lighthouse**
 
-[![ScreenCast](screencast.png)](screencast.mp4 "Screencast")
+![ScreenCast](screencast.gif)
 
 
 
