@@ -383,6 +383,13 @@ El componente `Contenido` será la sección principal (`main`), con las rutas y 
 
 -----------
 
+# Auditoría de la aplicación
+
+**Usando Lighthouse**
+
+![ScreenCast](screencast.mp4)
+
+
 ## Get started
 
 Install the dependencies...
