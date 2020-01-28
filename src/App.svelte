@@ -24,6 +24,7 @@
     display: flex;
     flex-direction: column;
     font-family: "Aclonica";
+    font-display: swap;     /* Para mejorar rendimiento en carga inicial */
   }
 
   :global(*) {
