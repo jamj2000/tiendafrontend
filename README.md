@@ -61,6 +61,23 @@ Un ventaja añadida es que su sintaxis es más simple, lo cual hace que su curva
 
 Cada componente se guarda en un archivo separado. El nombre del archivo debe tener la primera letra en mayúsculas y extensión `.svelte`. Por ejemplo `MiComponente.svelte`. 
 
+La estructura de un componente tiene 3 secciones:
+
+```html
+<script>
+  // Código javascript
+</script>
+
+<style>
+  /* Código CSS */
+</style>
+
+<!-- Nuestros elementos HTML y componentes web -->
+```
+
+No tienen por que aparecer las 3 secciones, y tampoco es necesario que estén en este orden aunque es recomendable.
+
+
 
 ### Similitud entre *elementos html* y *componentes web*
 
@@ -68,6 +85,12 @@ Cada componente se guarda en un archivo separado. El nombre del archivo debe ten
 
 
 ## Comunicación entre componentes
+
+Existen 3 métodos:
+
+- Propiedades
+- Contextos
+- Almacenes
 
 ### Propiedades (props)
 
@@ -565,7 +588,7 @@ Los archivos necesarios para hacer que una aplicación web sea progresiva son:
 - `public/images/icons/*`  
 - `public/service-worker.js`   
 
-Tanto el archivo `manifest.json` como la carpeta `images` y todos sus iconos, podemos generarlos de manera sencilla con [Web App Manifest Generato](https://app-manifest.firebaseapp.com/).
+Tanto el archivo `manifest.json` como la carpeta `images` y todos sus iconos, podemos generarlos de manera sencilla con [Web App Manifest Generator](https://app-manifest.firebaseapp.com/).
 
 El archivo `service-worker.js` se encarga de funcionar como intermediario entre nuestro frontend y el backend, y tiene la siguiente apariencia:
 
