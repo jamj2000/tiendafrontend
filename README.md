@@ -594,10 +594,52 @@ Este componente mostrará información acerca de la aplicación. Sólo posee có
 
 **`Articulo.svelte`**
 
+```html
+<script>
+  import Boton from "./Boton.svelte";
+  
+  export let articulo = {};
+</script>
+
+<style>
+   /* Aquí el código CSS */
+  /* Consultar el código fuente */
+</style>
+
+<div class="card" on:click>
+  <input bind:value={articulo.nombre} class="title" />
+  <input
+    type="number"
+    min="0"
+    max="9999.99"
+    step=".01"
+    bind:value={articulo.precio} />  €
+  <slot />
+</div>
+```
 
 
 
 **`Cliente.svelte`**
+
+```html
+<script>
+  import Boton from "./Boton.svelte";
+  
+  export let cliente = {};
+</script>
+
+<style>
+  /* Aquí el código CSS */
+  /* Consultar el código fuente */
+</style>
+
+<div class="card" on:click>
+  <input bind:value={cliente.nombre} class="title" />
+  <input bind:value={cliente.apellidos} class="title" />
+  <slot />
+</div>
+```
 
 
 
@@ -605,7 +647,85 @@ Este componente mostrará información acerca de la aplicación. Sólo posee có
 **`Boton.svelte`**
 
 
+```html
+<script>
+  import { onMount, getContext } from "svelte";
+  import { jsonData }            from "./store.js";
+
+  export let tipo = "insertar"; // insertar, modificar, eliminar
+  export let coleccion = "articulos"; // articulos, clientes
+  export let documento = {};
+  
+ 
+  let handler = () => {};  
+  let clases = "";
+  let url = "";
+
+  const URL = getContext("URL"); 
+
+  onMount(() => {
+    switch (tipo) {
+      case "insertar":
+        handler = insertar;
+        clases = "btn btn-insertar";
+        break;
+      case "modificar":
+        handler = modificar;
+        clases = "btn btn-modificar";
+        break;
+      case "eliminar":
+        handler = eliminar;
+        clases = "btn btn-eliminar";
+        break;
+      default:
+    }
+
+    switch (coleccion) {
+      case "articulos": url=URL.articulos; break;
+      case "clientes": url=URL.clientes; break;
+      default:
+    }
+  });
+
+  function insertar() {
+    // Aquí código Javascript
+    // Consultar el código fuente
+  }
+
+  function modificar() {
+    // Aquí código Javascript
+    // Consultar el código fuente
+  }
+
+  function eliminar() {
+    // Aquí código Javascript
+    // Consultar el código fuente
+  }
+
+  // Aquí código Javascript
+  // Consultar el código fuente
+</script>
+
+<style>
+  /* Aquí el código CSS */
+  /* Consultar el código fuente */
+</style>
+
+<button class={clases} on:click={handler} />
+```
+
 **`Buscar.svelte`**
+
+```html
+<script>
+  export let busqueda;
+</script>
+
+<label>
+  Buscar
+  <input bind:value={busqueda} type="search" />
+</label>
+```
 
 
 
@@ -827,8 +947,8 @@ Por último, es recomendable tener un archivo llamado `*offline.html*` o similar
     
     <script>
         // Este código detecta cuando volvemos a tener conexión
-        // y en ese caso cargamos la página principal de la aplicación.
-        // El usuario no necesita refrescar la página
+        // y en ese caso se carga automáticamente la página principal.
+        // El usuario no necesita refrescar la página.
         window.addEventListener("online", () => (window.location.href = "/"));
     </script>
 </body>
