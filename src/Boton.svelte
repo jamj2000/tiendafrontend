@@ -1,6 +1,6 @@
 <script>
-  import { jsonData } from "./store.js";
   import { onMount, getContext } from "svelte";
+  import { jsonData }            from "./store.js";
 
   export let tipo = "insertar"; // insertar, modificar, eliminar
   export let coleccion = "articulos"; // articulos, clientes

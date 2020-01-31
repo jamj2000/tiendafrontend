@@ -56,6 +56,39 @@ Proporcionando las siguientes ventajas:
 
 Un ventaja añadida es que su sintaxis es más simple, lo cual hace que su curva de aprendizaje sea menos pronunciada que la de otros frameworks. Por este motivo es un buen candidato para su uso con fines didácticos.
 
+
+## Características básicas
+
+Cada componente se guarda en un archivo separado. El nombre del archivo debe tener la primera letra en mayúsculas y extensión `.svelte`. Por ejemplo `MiComponente.svelte`. 
+
+
+### Similitud entre *elementos html* y *componentes web*
+
+
+
+
+## Comunicación entre componentes
+
+### Propiedades (props)
+
+- Permiten comunicación *padre-hijo* únicamente.
+- Permiten comunicación *arriba-abajo* y *abajo-arriba*.
+- Permiten comunicación *lectura-escritura*.
+
+### Contextos (setContext / getContext)
+
+- Permiten comunicación *padre-cualquier_descendiente*.
+- Permiten comunicación *arriba-abajo* únicamente.
+- Permiten comunicación *lectura* únicamente.
+
+### Almacenes (stores)
+
+- Permiten comunicación *componente-componente* independientemente de su jerarquía.
+- Permiten comunicación *arriba-abajo* y *abajo-arriba*.
+- Permiten comunicación *lectura-escritura*.
+
+
+
 ## Inicio de un proyecto de svelte
 
 Para iniciar un proyecto de svelte, ejecutamos:
@@ -213,6 +246,8 @@ npm  install
 
 Dicho comando, leerá el archivo `package.json`, e instalará todas las dependencias que aparecen ahí. Ahora ya podemos volver a ejecutar `npm  run  dev`.
 
+Podrás ver la aplicación en [localhost:5000](http://localhost:5000).
+
 
 ## Simplificando antes de comenzar
 
@@ -365,7 +400,7 @@ El componente `Nav` será la barra de navegación (`nav`), con los enlaces a las
 </script>
 
 <style>
-  /* Aquí el código CSS para diseño responsive de la barra de navegación. */
+  /* Aquí el código CSS */
   /* Consultar el código fuente */
 </style>
 
@@ -380,89 +415,278 @@ El componente `Nav` será la barra de navegación (`nav`), con los enlaces a las
 
 El componente `Contenido` será la sección principal (`main`), con las rutas y el componente asociado a cada una de ellas. Para las rutas hacemos uso del componente `Route` del paquete `svelte-routing`.
 
+## Componentes para el contenido
 
------------
+Dentro del componente anterior `Contenido` podrán renderizarse distintos componentes, dependiendo del `Link` que pulsemos en la barra de navegación. Los componentes que podrán aparecer en `Contenido` son:
 
-# Auditoría de la aplicación
+- **Inicio**
+- **Artículos**
+- **Clientes**
 
-**Usando Lighthouse**
+**`Inicio.svelte`**
 
-![ScreenCast](screencast.gif)
+```html
+<style>
+  /* Aquí el código CSS */
+  /* Consultar el código fuente */
+</style>
 
-
-
-## Get started
-
-Install the dependencies...
-
-```bash
-cd svelte-app
-npm install
+<h1>Tienda PWA</h1>
+  <!-- Se eliminan etiquetas html para resaltar lo esencial -->
+  <!-- Consulta el código fuente. --> 
 ```
 
-...then start [Rollup](https://rollupjs.org):
-
-```bash
-npm run dev
-```
-
-Navigate to [localhost:5000](http://localhost:5000). You should see your app running. Edit a component file in `src`, save it, and reload the page to see your changes.
-
-By default, the server will only respond to requests from localhost. To allow connections from other computers, edit the `sirv` commands in package.json to include the option `--host 0.0.0.0`.
+Este componente mostrará información acerca de la aplicación. Sólo posee código HTML y CSS. No necesita solicitar datos al servidor. Por tanto su carga es inmediata, y por este motivo lo mostraremos nada más iniciarse la aplicación. Ello permite una carga inicial de la aplicación instantánea.
 
 
-## Building and running in production mode
+**`Articulos.svelte`**
 
-To create an optimised version of the app:
+
+
+
+**`Clientes.svelte`**
+
+
+
+
+
+
+
+
+
+## Construir la aplicación para el entorno de producción
+
+Para crear una versión optimizada de la aplicación, ejecutamos:
 
 ```bash
 npm run build
 ```
 
-You can run the newly built app with `npm run start`. This uses [sirv](https://github.com/lukeed/sirv), which is included in your package.json's `dependencies` so that the app will work when you deploy to platforms like [Heroku](https://heroku.com).
+Puedes ejecutar la aplicación recién creada con `npm run start`. Esto utiliza [sirv] (https://github.com/lukeed/sirv), que se incluye en las `dependencias` de `package.json` para que la aplicación funcione cuando se implemente en plataformas como [Heroku] (https://heroku.com).
 
 
-## Single-page app mode
+## Single-Page App
 
-By default, sirv will only respond to requests that match files in `public`. This is to maximise compatibility with static fileservers, allowing you to deploy your app anywhere.
+**Esta es una aplicación de página única (SPA)**.
 
-If you're building a single-page app (SPA) with multiple routes, sirv needs to be able to respond to requests for *any* path. You can make it so by editing the `"start"` command in package.json:
+Por defecto, sirv solo responderá a las solicitudes que coincidan con los archivos en `public`. Esto es para maximizar la compatibilidad con los servidores de archivos estáticos, lo que le permite implementar su aplicación en cualquier lugar.
+
+Si estás creando una aplicación de una sola página (SPA) con varias rutas, sirv debe poder responder a las solicitudes de *cualquier* ruta. Puedes hacerlo editando el comando `"start"` en package.json:
+
 
 ```js
 "start": "sirv public --single"
 ```
 
+> NOTA: sirv es el módulo de node que permite ejecutar un servidor web y mostrar nuestra app.
 
-## Deploying to the web
 
-### With [now](https://zeit.co/now)
+## Despliegue en la web
 
-Install `now` if you haven't already:
+Este frontend no contiene código de servidor, es decir, no contiene código para backend. Por tanto podemos desplegarlo como hariamos con cualquier página html. Cualquier sitio que permita **contenido estático** nos vale. 
+
+Existen muchos sitios que ofrecen esta opción, Por ejemplo:
+
+- GitHub Pages
+- Nelify
+- Now (de [Zeit.co](https://zeit.co) )
+- Surge
+
+Para desarrolladores con poca experiencia, la forma más sencilla de despliegue es utilizar la interfaz web que proporcionan dichos sitios. 
+
+Pero si deseas realizar el despliegue mediante interfaz de texto, a continuación se muestra un resumen de cómo se realizaría con Now y con Surge.
+
+
+**Con [now](https://zeit.co/now)**
+
+Instala `now` si aún no lo has hecho:
 
 ```bash
 npm install -g now
 ```
 
-Then, from within your project folder:
+Luego, desde la carpeta de tu proyecto:
 
 ```bash
-cd public
-now deploy --name my-project
+cd  public
+now  deploy  --name my-project
 ```
 
-As an alternative, use the [Now desktop client](https://zeit.co/download) and simply drag the unzipped project folder to the taskbar icon.
+> NOTA: Sustituye *my-project* por el nombre de tu proyecto.
 
-### With [surge](https://surge.sh/)
 
-Install `surge` if you haven't already:
+**Con [surge](https://surge.sh/)**
+
+Instala `surge` si aún no lo has hecho:
 
 ```bash
 npm install -g surge
 ```
 
-Then, from within your project folder:
+Luego, desde la carpeta de tu proyecto:
 
 ```bash
-npm run build
-surge public my-project.surge.sh
+npm  run  build
+surge  public  my-project.surge.sh
 ```
+
+> NOTA: Sustituye *my-project* por el nombre de tu proyecto.
+
+
+## Progressive Web Application
+
+**Esta es una aplicación web progresiva (PWA)**.
+
+La tecnología PWA es relativamente nueva, iniciandose en el año 2015 bajo el auspicio de **Google**.
+
+Dicha tecnología pretende, mediante la aplicación de pequeñas adaptaciones, usar las **tecnologías web (HTML + CSS + Javascript)** para el **desarrollo de aplicaciones de escritorio y móviles**.
+
+Como el lector entendido en el asunto comprenderá rápidamente, las implicaciones de tal tecnología son enormes:
+
+- **Desarrollo para web, para escritorio y para móvil. Todo en uno.**
+- **Simplificación del desarrollo**. 
+  - "No es necesario" aprender lenguajes como Java o Swift.
+  - "No es necesario" desarrollar de forma nativa (SDKs para Android e iOS).
+  - "No es necesario" desarrollar de forma híbrida (Frameworks Cordova, React Native, Angular Ionic. Electron para el escritorio)
+- **Uso de Web APIs**, las cuales [son bastantes, muchas de ellas aún en desarrollo](https://developer.mozilla.org/en-US/docs/Web/API): fetch, websockets, geolocalización, audio, speech, ... 
+ 
+
+**Requisitos para considerar progresiva a una aplicación web**
+
+Una PWA debe cumplir, en esencia, 2 requisitos:
+
+- Debe servirse desde un servidor **HTTPS**. Excepción: `localhost`.
+- Debe tener capacidad de funcionar **offline**. Para ello es necesario disponer de un *Service Worker*.
+
+
+Los archivos necesarios para hacer que una aplicación web sea progresiva son:
+
+- `public/manifest.json` 
+- `public/images/icons/*`  
+- `public/service-worker.js`   
+
+Tanto el archivo `manifest.json` como la carpeta `images` y todos sus iconos, podemos generarlos de manera sencilla con [Web App Manifest Generato](https://app-manifest.firebaseapp.com/).
+
+El archivo `service-worker.js` se encarga de funcionar como intermediario entre nuestro frontend y el backend, y tiene la siguiente apariencia:
+
+```javascript
+//------  Este código está simplificado para resaltar la estructura
+//------  Para ver todo el código consulta el archivo correspondiente
+const CACHE_NAME = 'tiendafrontend-v1';
+
+// Archivos necesarios para el funcionamiento offline
+const CACHE_ASSETS = [
+  '/',
+  '/index.html',
+  '/offline.html',
+  '/favicon.png'
+];
+
+// INSTALL
+// Realizamos el cacheo de la APP SHELL
+self.addEventListener('install', funcionDeInstalacion);
+
+
+// ACTIVATE
+// Eliminamos cachés antiguas.
+self.addEventListener('activate', funcionDeActivacion);
+
+
+// FETCH
+// Hacemos peticiones a recursos.
+self.addEventListener('fetch', funcionDeFetch);
+
+
+// PUSH
+self.addEventListener('push', funcionDePush);
+```
+
+El código fuente completo puede verse en [public/service-worker.js](./public/service-worker.js)
+
+Además de todo lo anterior, deberemos modificar el archivo **`index.html`** para que aparezcan las siguientes líneas:
+
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- Se eliminan etiquetas html para resaltar lo esencial -->
+  <!-- Consulta el código fuente. --> 
+
+	<link rel="icon" type="image/png" href="/favicon.png">
+  
+	<!-- PWA: Para habilitar Progressive Web Application -->
+	<link rel="manifest" href="manifest.json">  <!--                  IMPORTANTE -->
+  
+	<!-- PWA: Añadir a pantalla de inicio para Safari en iOS -->
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-title" content="Tienda">
+	<link rel="apple-touch-icon" sizes="152x152" href="/images/icons/icon-152x152.png">
+	<meta name="msapplication-TileImage" content="/images/icons/icon-144x144.png">
+	<meta name="msapplication-TileColor" content="#fdebc9">
+  
+  <!-- Chrome, Firefox OS and Opera -->
+  <meta name="theme-color" content="#fdebc9">
+
+  <!-- Se eliminan etiquetas html para resaltar lo esencial -->
+  <!-- Consulta el código fuente. --> 
+</head>
+
+<body>
+	<noscript>
+		<p> Este sitio necesita Javascript para funcionar. </p>
+	</noscript>
+	<script>
+		// Si está soportado serviceWorker por el navegador
+		if ('serviceWorker' in navigator) {
+		  window.addEventListener('load', () => {
+			navigator.serviceWorker
+			  .register('./service-worker.js')
+			  .then(reg => console.log('[Service Worker] * Registrado.'))
+			  .catch(err => console.log(`[Service Worker] * Error: ${err}`));
+		  });
+		}
+	  </script>
+	
+	  <script src="service-worker.js"></script> <!-- Gestión de eventos del ServiceWorker -->
+</body>
+</html>
+```
+
+Lo que hacemos es **añadir un enlace al archivo `manifest.json`** e indicar los iconos y colores que usaremos.
+
+El código fuente completo puede verse en [public/index.html](./public/index.html)
+
+Por último, es recomendable tener un archivo llamado `*offline.html*` o similar, que mostraremos cuando no haya conexión. 
+
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+</head>
+  <!-- Se eliminan etiquetas html para resaltar lo esencial -->
+  <!-- Consulta el código fuente. --> 
+<body>
+    Estamos sin conexión
+    
+    <script>
+        // Este código detecta cuando volvemos a tener conexión
+        // y en ese caso cargamos la página principal de la aplicación.
+        // El usuario no necesita refrescar la página
+        window.addEventListener("online", () => (window.location.href = "/"));
+    </script>
+</body>
+</html>
+```
+
+## Auditoría de la aplicación
+
+Podemos realizar una auditoría de la aplicación, haciendo uso de la extensión **Lighthouse** de Chrome. Para instalar dicha extensión en el navegador chrome escribimos la URL chrome://extensions/.
+
+Si pulsamos la tecla `F12` para mostrar las `Dev Tools` podremos ver una pestaña con el nombre `Audits`. Desde ahí realizaremos la auditoría.
+
+
+![ScreenCast](screencast.gif)
+
+
+> NOTA: Algunas extensiones activas en el navegador pueden ralentizar las pruebas y provocar que el *score* obtenido sea menor. Para evitar esto podemos lanzar la auditoría desde el `modo incógnito` del navegador o, una solución más drástica, desactivar las extensiones.

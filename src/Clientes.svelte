@@ -1,10 +1,10 @@
 <script>
   import { onMount, getContext } from "svelte";
-  import { jsonData } from "./store.js";
+  import { jsonData }            from "./store.js";
 
-  import Buscar from "./Buscar.svelte";
-  import Cliente from "./Cliente.svelte";
-  import Boton from "./Boton.svelte";
+  import Buscar                  from "./Buscar.svelte";
+  import Cliente                 from "./Cliente.svelte";
+  import Boton                   from "./Boton.svelte";
 
   const URL = getContext("URL");
 

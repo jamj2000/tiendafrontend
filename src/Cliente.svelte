@@ -1,5 +1,6 @@
 <script>
   import Boton from "./Boton.svelte";
+  
   export let cliente = {};
 </script>
 

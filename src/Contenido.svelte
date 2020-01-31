@@ -1,8 +1,8 @@
 <script>
-  import { Route } from "svelte-routing";
-  import Inicio from "./Inicio.svelte";
-  import Articulos from "./Articulos.svelte";
-  import Clientes from "./Clientes.svelte";
+  import { Route }  from "svelte-routing";
+  import Inicio     from "./Inicio.svelte";
+  import Articulos  from "./Articulos.svelte";
+  import Clientes   from "./Clientes.svelte";
 </script>
 
 <style>
