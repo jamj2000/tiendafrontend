@@ -75,7 +75,7 @@ La estructura de un componente tiene 3 secciones:
 <!-- Nuestros elementos HTML y componentes web -->
 ```
 
-No tienen por que aparecer las 3 secciones, y tampoco es necesario que estén en este orden aunque es recomendable.
+No tienen por que aparecer las 3 secciones, y tampoco es necesario que estén en este orden, aunque es recomendable.
 
 
 
@@ -373,7 +373,7 @@ En la sección de `script` importamos los paquetes y componentes que vayamos a u
 npm  install  svelte-routing
 ```
 
-Vamos a importar también los componentes `Nav` y `Contenido`, que van a estar en la misma carpeta que `App`, y que vamos a crear el el siguiente apartado.
+Vamos a importar también los componentes `Nav` y `Contenido`, que van a estar en la misma carpeta que `App`, y que vamos a crear el el siguiente apartado. Ahora mismo, para que no de error el compilador, podemos crear los 2 componentes vacíos o con algún mensaje en su interior.
 
 **En svelte los estilos CSS solamente se aplican al componente donde están definidos y a ningún otro componente, aunque tengan las mismas etiquetas**. Si queremos que una determinada etiqueta html tenga un estilo en todos los componentes usamos la forma `:global(etiqueta) { ... }` en lugar de `etiqueta {}` 
 
