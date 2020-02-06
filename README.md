@@ -697,24 +697,162 @@ Existen 3 métodos:
 - Contextos
 - Almacenes
 
+
+
 ### Propiedades (props)
 
-- Permiten comunicación *padre-hijo* únicamente.
-- Permiten comunicación *arriba-abajo* y *abajo-arriba*.
-- Permiten comunicación *lectura-escritura*.
+- Permiten comunicación ***padre-hijo*** únicamente.
+- Permiten comunicación ***arriba-abajo*** y ***abajo-arriba***.
+- Permiten comunicación ***lectura-escritura***.
+
+#### Ejemplo
+
+**`Articulos.svelte`**
+```html
+<script>
+    let texto = "camisa";
+</script>
+
+<Buscar busqueda={texto} />
+```
+
+**`Buscar.svelte`**
+
+```html
+<script>
+  export let busqueda;
+</script>
+
+<label>
+  Buscar
+  <input bind:value={busqueda} type="search" />
+</label>
+```
+
+Desde el componente padre `Articulos` pasamos el valor `camisa` a la propiedad `busqueda` del componente `Buscar`.
+
+Por defecto, el sentido de la comunicación es Padre->Hijo. 
+
+Si deseamos que el hijo (`Buscar`) pueda pasar información al padre (`Articulos`) haremos uso de la directiva **`bind`** en el componente padre, que quedaría así:
+
+```html
+<script>
+    let texto = "camisa";
+</script>
+
+<Buscar bind:busqueda={texto} />
+```
+
+El valor de la propiedad `busqueda`, que será modificada desde el componente `Buscar`, "subirá" hasta la variable `texto` del componente `Articulos`.
+
+
 
 ### Contextos (setContext / getContext)
 
-- Permiten comunicación *padre-cualquier_descendiente*.
-- Permiten comunicación *arriba-abajo* únicamente.
-- Permiten comunicación *lectura* únicamente.
+- Permiten comunicación ***padre-cualquier_descendiente***.
+- Permiten comunicación ***arriba-abajo*** únicamente.
+- Permiten comunicación ***lectura*** únicamente.
+
+
+#### Ejemplo
+
+**`App.svelte`**
+
+```html
+<script>
+  import { setContext } from "svelte";
+	
+  const urlArticulos = "https://tiendabackend.herokuapp.com/api/articulos/";
+
+  setContext("urlArticulos", urlArticulos);
+</script>	
+```
+
+**`Boton.svelte`**
+
+```html
+<script>
+  import { getContext } from "svelte";
+	
+  const urlArticulos = getContext("urlArticulos");
+	
+  function obtener() {
+      fetch(urlArticulos, { method: "GET" })
+      .then(res => res.json())
+      .then(data => {  /* código para éxito */ })
+      .catch(err => {  /* código para error */ });
+  }
+</script>
+```
 
 ### Almacenes (stores)
 
-- Permiten comunicación *componente-componente* independientemente de su jerarquía.
-- Permiten comunicación *arriba-abajo* y *abajo-arriba*.
-- Permiten comunicación *lectura-escritura*.
+- Permiten comunicación ***componente-componente*** independientemente de su jerarquía.
+- Permiten comunicación ***arriba-abajo*** y ***abajo-arriba***.
+- Permiten comunicación ***lectura-escritura***.
 
+
+#### Ejemplo
+
+**`store.js`**
+
+ ```javascript
+import { writable } from 'svelte/store';
+
+export const jsonData = writable([]);
+```
+
+Declaramos en `store.js` un array vacío, que contendrá datos en formato JSON.
+
+
+**`Articulos.svelte`**
+
+```html
+<script>
+ import { jsonData }   from "./store.js";
+	
+ onMount(async () => {
+    const response = await fetch( urlArticulos );
+    const data = await response.json();
+    $jsonData = data;
+  });
+</script>	
+```
+
+En el componente `Articulos.svelte` hacemos una petición **fetch** al servidor y guardamos los datos en formato JSON en la variable jsonData del almacén. 
+
+**Nota:** Observa que para referirnos a la variable del almacén lo hacemos como **$jsonData**.
+
+
+**Boton.svelte**
+
+```html
+<script>
+  import { jsonData }   from "./store.js";
+  export let documento = {};
+	
+  function insertar() {
+      fetch(urlArticulos, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(documento)
+      })
+        .then(res => res.json())
+        .then(data => { 
+	  $jsonData = [...$jsonData, data];
+          ok();
+        })
+        .catch(err => ko());
+  }
+	
+</script>
+```
+
+En el componente `Boton.svelte` insertamos un nuevo artículo en el servidor mediante una petición **fetch** de tipo POST. Si se guarda correctamente en el servidor, entonces actualizamos en consecuencia nuestra variable jsonData del almacén:
+
+**`$jsonData = [...$jsonData, data]`**
+
+**Nota:** Observa de nuevo que para referirnos a la variable del almacén lo hacemos como **$jsonData**.
 
 
 
