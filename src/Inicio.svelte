@@ -31,6 +31,6 @@
     </li>
     <li>
       <strong>Clientes</strong>
-      : Permite realizar operaciones de obtención, inserción, modificación y eliminación de artículos en una BD.
+      : Permite realizar operaciones de obtención, inserción, modificación y eliminación de clientes en una BD.
   </ul>
 </div>
