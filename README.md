@@ -81,6 +81,7 @@ No tienen por que aparecer las 3 secciones, y tampoco es necesario que estén en
 
 ### Similitud entre *elementos html* y *componentes web*
 
+![similitud](similitud.png)
 
 
 
@@ -532,7 +533,7 @@ Este componente mostrará información acerca de la aplicación. Sólo posee có
 
 **`Clientes.svelte`**
 
-![Clientes](cliente.png)
+![Clientes](clientes.png)
 
 ```html
 <script>
