@@ -332,6 +332,8 @@ Sencillo, no?.  Ya podemos empezar.
 
 Vamos a modificar el componente `App.svelte`, el cual habiamos vaciado anteriormente.
 
+![App](app.png)
+
 El contenido que tendrá sera el siguiente:
 
 ```html
@@ -464,6 +466,8 @@ Este componente mostrará información acerca de la aplicación. Sólo posee có
 
 **`Articulos.svelte`**
 
+![Articulos](articulos.png)
+
  ```html
  <script>
   import { onMount, getContext } from "svelte";
@@ -527,6 +531,8 @@ Este componente mostrará información acerca de la aplicación. Sólo posee có
 
 
 **`Clientes.svelte`**
+
+![Clientes](cliente.png)
 
 ```html
 <script>
