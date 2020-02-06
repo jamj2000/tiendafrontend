@@ -16,7 +16,8 @@
 </style>
 
 <h1>Tienda PWA</h1>
-<p><small>Fullstack WepApp - MEN (MongoDB + Express + NodeJS)</small></p>
+<p><small><b>Frontend</b></small></p>
+<p><small>Backend en https://tiendabackend.herokuapp.com</p>
 <p>Esta SPA (Single Page Application) ofrece 3 opciones:</p>
 <div>
   <ul>
