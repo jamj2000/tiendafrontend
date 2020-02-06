@@ -26,11 +26,10 @@
     </li>
     <li>
       <strong>Artículos</strong>
-      : Permite realizar operaciones CRUD sobre los artículos de la BD.
+      : Permite realizar operaciones de obtención, inserción, modificación y eliminación de artículos en una BD.
     </li>
     <li>
       <strong>Clientes</strong>
-      : Permite realizar operaciones CRUD sobre los clientes de la BD.
-    </li>
+      : Permite realizar operaciones de obtención, inserción, modificación y eliminación de artículos en una BD.
   </ul>
 </div>
