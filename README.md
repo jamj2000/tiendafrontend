@@ -57,62 +57,6 @@ Proporcionando las siguientes ventajas:
 Un ventaja añadida es que su sintaxis es más simple, lo cual hace que su curva de aprendizaje sea menos pronunciada que la de otros frameworks. Por este motivo es un buen candidato para su uso con fines didácticos.
 
 
-## Características básicas
-
-Cada componente se guarda en un archivo separado. El nombre del archivo debe tener la primera letra en mayúsculas y extensión `.svelte`. Por ejemplo `MiComponente.svelte`. 
-
-La estructura de un componente tiene 3 secciones:
-
-```html
-<script>
-  // Código javascript
-</script>
-
-<style>
-  /* Código CSS */
-</style>
-
-<!-- Nuestros elementos HTML y componentes web -->
-```
-
-No tienen por que aparecer las 3 secciones, y tampoco es necesario que estén en este orden, aunque es recomendable.
-
-
-
-### Similitud entre *elementos html* y *componentes web*
-
-![similitud](similitud.png)
-
-
-
-## Comunicación entre componentes
-
-Existen 3 métodos:
-
-- Propiedades
-- Contextos
-- Almacenes
-
-### Propiedades (props)
-
-- Permiten comunicación *padre-hijo* únicamente.
-- Permiten comunicación *arriba-abajo* y *abajo-arriba*.
-- Permiten comunicación *lectura-escritura*.
-
-### Contextos (setContext / getContext)
-
-- Permiten comunicación *padre-cualquier_descendiente*.
-- Permiten comunicación *arriba-abajo* únicamente.
-- Permiten comunicación *lectura* únicamente.
-
-### Almacenes (stores)
-
-- Permiten comunicación *componente-componente* independientemente de su jerarquía.
-- Permiten comunicación *arriba-abajo* y *abajo-arriba*.
-- Permiten comunicación *lectura-escritura*.
-
-
-
 ## Inicio de un proyecto de svelte
 
 Para iniciar un proyecto de svelte, ejecutamos:
@@ -291,12 +235,16 @@ El componente `App.svelte` será el componente principal de la aplicación. Todo
 
 Cada componente dispone de 3 secciones:
 
-``` 
-<script></script>
+```html
+<script>
+  // Código javascript
+</script>
 
-<style></style>
+<style>
+  /* Código CSS */
+</style>
 
-< elementos html y componentes web >
+<!-- Nuestros elementos HTML y componentes web -->
 ```
 
 El orden es indiferente, aunque se recomienda organizar siguiendo el orden anterior.
@@ -733,6 +681,40 @@ Este componente mostrará información acerca de la aplicación. Sólo posee có
   <input bind:value={busqueda} type="search" />
 </label>
 ```
+
+
+### Similitud entre *elementos html* y *componentes web*
+
+![similitud](similitud.png)
+
+
+
+## Comunicación entre componentes
+
+Existen 3 métodos:
+
+- Propiedades
+- Contextos
+- Almacenes
+
+### Propiedades (props)
+
+- Permiten comunicación *padre-hijo* únicamente.
+- Permiten comunicación *arriba-abajo* y *abajo-arriba*.
+- Permiten comunicación *lectura-escritura*.
+
+### Contextos (setContext / getContext)
+
+- Permiten comunicación *padre-cualquier_descendiente*.
+- Permiten comunicación *arriba-abajo* únicamente.
+- Permiten comunicación *lectura* únicamente.
+
+### Almacenes (stores)
+
+- Permiten comunicación *componente-componente* independientemente de su jerarquía.
+- Permiten comunicación *arriba-abajo* y *abajo-arriba*.
+- Permiten comunicación *lectura-escritura*.
+
 
 
 
