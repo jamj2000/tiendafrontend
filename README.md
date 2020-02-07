@@ -1058,9 +1058,11 @@ Además de todo lo anterior, deberemos modificar el archivo **`index.html`** par
 
 Lo que hacemos es **añadir un enlace al archivo `manifest.json`** e indicar los iconos y colores que usaremos.
 
+Además en el `body` de la página, registramos el `service-worker.js` y lo cargamos.
+
 El código fuente completo puede verse en [public/index.html](./public/index.html)
 
-Por último, es recomendable tener un archivo llamado `*offline.html*` o similar, que mostraremos cuando no haya conexión. 
+Por último, es recomendable tener un archivo llamado *`offline.html`* o similar, que mostraremos cuando no haya conexión. 
 
 ```html
 <!DOCTYPE html>
