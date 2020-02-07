@@ -6,7 +6,7 @@
 >
 > - Mucho del código que aparece en este minitutorial está simplificado con fines didácticos.
 > - Para ver todo el código, revisar el código fuente de este repositorio.
-> - La parte Backend de la aplicación puede verse en [tiendabackend](https://github.com/jamj2000/tiendabackend)
+> - **La parte backend de la aplicación puede verse en [tiendabackend](https://github.com/jamj2000/tiendabackend)**
 
 
 ## Introducción
