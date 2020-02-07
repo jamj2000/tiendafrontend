@@ -1,13 +1,12 @@
-# Svelte - Mini tutorial
+# FRONTEND (con Svelte)
 
 > **ESTE MINITUTORIAL ES UNA VERSIÓN RESUMIDA DEL FRONTEND DE ESTA APLICACIÓN**
 > 
 > A tener muy en cuenta:
 >
-> - Este minitutorial aún está en elaboración. La aplicación también.
-> - No se explica la parte backend, sólo la parte frontend.
 > - Mucho del código que aparece en este minitutorial está simplificado con fines didácticos.
 > - Para ver todo el código, revisar el código fuente de este repositorio.
+> - La parte Backend de la aplicación puede verse en [tiendabackend](https://github.com/jamj2000/tiendabackend)
 
 
 ## Introducción
