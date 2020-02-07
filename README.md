@@ -864,7 +864,7 @@ Para crear una versión optimizada de la aplicación, ejecutamos:
 npm run build
 ```
 
-Puedes ejecutar la aplicación recién creada con `npm run start`. Esto utiliza [sirv] (https://github.com/lukeed/sirv), que se incluye en las `dependencias` de `package.json` para que la aplicación funcione cuando se implemente en plataformas como [Heroku] (https://heroku.com).
+Puedes ejecutar la aplicación recién creada con `npm run start`. Esto utiliza [sirv](https://github.com/lukeed/sirv), que se incluye en las `dependencias` de `package.json` para que la aplicación funcione cuando se implemente en plataformas como [Heroku](https://heroku.com).
 
 
 ## Single-Page App
