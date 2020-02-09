@@ -9,7 +9,6 @@
   ],
   "author": "jamj2000 at google dot com",
   "license": "GPL",
-  "devDependencies": {
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
