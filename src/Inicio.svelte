@@ -33,4 +33,4 @@
       : Permite realizar operaciones de obtención, inserción, modificación y eliminación de clientes en una BD.
   </ul>
 </div>
-<p><small>Backend en https://tiendabackend.herokuapp.com</p>
+<p><small>Backend en https://tiendabackend.herokuapp.com</small></p>
