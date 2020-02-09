@@ -2,6 +2,14 @@
   "name": "tiendafrontend",
   "version": "1.0.0",
   "description": "Frontend of a Fullstack webapp",
+  "keywords": [
+    "webapp",
+    "frontend",
+    "fullstack"
+  ],
+  "author": "jamj2000 at google dot com",
+  "license": "GPL",
+  "devDependencies": {
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
