@@ -17,7 +17,6 @@
 
 <h1>Tienda Frontend</h1>
 <p><small><b>Progressive Web App (PWA)</b></small></p>
-<p><small>Backend en https://tiendabackend.herokuapp.com</p>
 <p>Esta SPA (Single Page Application) ofrece 3 opciones:</p>
 <div>
   <ul>
@@ -34,3 +33,4 @@
       : Permite realizar operaciones de obtención, inserción, modificación y eliminación de clientes en una BD.
   </ul>
 </div>
+<p><small>Backend en https://tiendabackend.herokuapp.com</p>
