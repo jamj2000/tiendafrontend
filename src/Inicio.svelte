@@ -17,6 +17,7 @@
 
 <h1>Tienda Frontend</h1>
 <p><small><b>Progressive Web App (PWA)</b></small></p>
+<p><small><b>Código fuente en <a href="https://github.com/jamj2000/tiendafrontend">https://github.com/jamj2000/tiendafrontend</a></b></small></p>
 <p>Esta SPA (Single Page Application) ofrece 3 opciones:</p>
 <div>
   <ul>
