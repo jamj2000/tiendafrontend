@@ -889,7 +889,7 @@ Este frontend no contiene código de servidor, es decir, no contiene código par
 Existen muchos sitios que ofrecen esta opción, Por ejemplo:
 
 - GitHub Pages
-- Nelify
+- Netlify
 - Now (de [Zeit.co](https://zeit.co) )
 - Surge
 
