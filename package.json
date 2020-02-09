@@ -1,6 +1,7 @@
 {
   "name": "tiendafrontend",
   "version": "1.0.0",
+  "description": "Frontend of a Fullstack webapp",
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
