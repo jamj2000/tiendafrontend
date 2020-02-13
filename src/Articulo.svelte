@@ -1,6 +1,4 @@
 <script>
-  import Boton from "./Boton.svelte";
-  
   export let articulo = {};
 </script>
 
@@ -47,7 +45,7 @@
   }
 </style>
 
-<div class="card" on:click>
+<div class="card">
   <input bind:value={articulo.nombre} class="title" />
   <input
     type="number"
