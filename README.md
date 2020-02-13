@@ -550,8 +550,6 @@ Este componente mostrará información acerca de la aplicación. Sólo posee có
 
 ```html
 <script>
-  import Boton from "./Boton.svelte";
-  
   export let articulo = {};
 </script>
 
@@ -560,7 +558,7 @@ Este componente mostrará información acerca de la aplicación. Sólo posee có
   /* Consultar el código fuente */
 </style>
 
-<div class="card" on:click>
+<div class="card">
   <input bind:value={articulo.nombre} class="title" />
   <input
     type="number"
@@ -578,8 +576,6 @@ Este componente mostrará información acerca de la aplicación. Sólo posee có
 
 ```html
 <script>
-  import Boton from "./Boton.svelte";
-  
   export let cliente = {};
 </script>
 
@@ -588,7 +584,7 @@ Este componente mostrará información acerca de la aplicación. Sólo posee có
   /* Consultar el código fuente */
 </style>
 
-<div class="card" on:click>
+<div class="card">
   <input bind:value={cliente.nombre} class="title" />
   <input bind:value={cliente.apellidos} class="title" />
   <slot />
@@ -606,8 +602,8 @@ Este componente mostrará información acerca de la aplicación. Sólo posee có
   import { onMount, getContext } from "svelte";
   import { jsonData }            from "./store.js";
 
-  export let tipo = "insertar"; // insertar, modificar, eliminar
-  export let coleccion = "articulos"; // articulos, clientes
+  export let tipo = "insertar";        // insertar, modificar, eliminar
+  export let coleccion = "articulos";  // articulos, clientes
   export let documento = {};
   
  
