@@ -6,13 +6,13 @@
   h1,
   div,
   p {
-    margin-left: 50px;
+    margin-left: 5px;
   }
   div {
     padding: 30px;
   }
   p {
-    padding: 10px;
+    padding: 5px;
   }
   li {
     margin-top: 5px;
@@ -23,7 +23,7 @@
   }
   .resumen {
     display: flex;
-    align-items: center;
+    flex-wrap: wrap;    
     padding: 5px;
     margin: 0 0 15px;
     border: 1px solid #000;
@@ -34,8 +34,7 @@
   }
 
   .opcion {
-    display: flex;
-    align-items: center;
+    display: flex;   
     word-break: break-word;
     padding: 0 10px;
     font-size: 14px;
@@ -55,6 +54,7 @@
     word-break: break-word;
     font-family: sans-serif;
     color: #3b4151;
+    padding-top: 10px;
     padding-left: 10px;
   }
 </style>
