@@ -21,6 +21,10 @@
     list-style-type: none;
   }
 
+  span {
+    padding-right: 10px;
+  }
+
   .menu li:hover {
     text-shadow: 3px 3px 4px #6f6f70;
   }
@@ -35,15 +39,17 @@
   /* Móvil */
   .menu {
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
   }
+
+  .logo {
+    flex: 1;
+  }
   .item {
-    width: 100%;
-    text-align: center;
-    order: 3;
-    display: none;
+    order: 1;
+    display: block;
+    width: auto;
   }
   .active {
     display: block;
@@ -51,7 +57,7 @@
   /* Tablet */
   @media all and (min-width: 600px) {
     .menu {
-      justify-content: center;
+      justify-content: space-between;
     }
     .logo {
       flex: 1;
@@ -60,6 +66,23 @@
       order: 1;
       display: block;
       width: auto;
+    }
+
+    .inicio::after,
+    .articulos::after,
+    .clientes::after {
+      display: inline-block;
+      padding-left: 10px;
+    }
+
+    .inicio::after {
+      content: "Inicio";
+    }
+    .articulos::after {
+      content: "Artículos";
+    }
+    .clientes::after {
+      content: "Clientes";
     }
   }
   /* PC */
@@ -81,13 +104,19 @@
 <nav>
   <ul class="menu">
     <li class="logo">
-      <Link to="/">🛒 Inicio</Link>
+      <Link to="/">
+        <span class="inicio">🛒</span>
+      </Link>
     </li>
     <li class="item active">
-      <Link to="/articulos">🎁 Artículos</Link>
+      <Link to="/articulos">
+        <span class="articulos">🎁</span>
+      </Link>
     </li>
     <li class="item active">
-      <Link to="/clientes">👥 Clientes</Link>
+      <Link to="/clientes">
+        <span class="clientes">👥</span>
+      </Link>
     </li>
   </ul>
 </nav>
