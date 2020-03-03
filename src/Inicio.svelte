@@ -6,17 +6,12 @@
   h1,
   div,
   p {
-    margin-left: 5px;
+    padding: 3px;
   }
   div {
     padding: 30px;
   }
-  p {
-    padding: 5px;
-  }
-  li {
-    margin-top: 5px;
-  }
+
   .bloque {
     display: flex;
     flex-direction: column;
