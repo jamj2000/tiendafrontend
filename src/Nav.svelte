@@ -32,7 +32,7 @@
   .menu li {
     font-weight: bold;
     font-size: 16px;
-    padding: 15px 5px;
+    padding: 15px 15px;
     white-space: nowrap;
   }
 
