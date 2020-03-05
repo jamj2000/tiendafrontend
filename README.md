@@ -686,7 +686,7 @@ Este componente mostrará información acerca de la aplicación. Sólo posee có
 
 ## Comunicación entre componentes
 
-Existen 3 métodos:
+Existen 3 mecanismos:
 
 - Propiedades
 - Contextos
