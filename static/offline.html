@@ -18,7 +18,7 @@
             font-size: 4vw;
         }
 
-        img {
+        div.no-connection {
             max-width: 40%;
             height: auto;
             display: block;
@@ -31,15 +31,13 @@
 
 
 <body>
-    <h4>No tenemos conexión a Internet.</h4>
-    <h4>Compruebe la conectividad.</h4>
-    <img src="./favicon.png" alt="logo" />
-    <br />
     <h3>Tienda PWA</h3>
-    <small>Ejemplo didáctico</small>
-    <br />
+    <h4>No hay conexión a Internet.</h4>
+    <div class="no-connection">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 100 125" enable-background="new 0 0 100 100" xml:space="preserve"><path d="M36.2,61.6l-5.8-5.8c3.3-3.3,7.3-5.6,11.5-6.9l0.3,8.7C39.9,58.5,37.9,59.8,36.2,61.6z M25.2,50.6  c4.7-4.7,10.4-7.7,16.4-9.2L41.4,33c-8.1,1.6-15.7,5.6-22,11.8L25.2,50.6z M58.6,33l-0.3,8.4c6,1.5,11.7,4.5,16.4,9.2l5.8-5.8  C74.4,38.6,66.7,34.6,58.6,33z M58.1,48.8l-0.3,8.7c2.2,1,4.2,2.3,6,4.1l5.8-5.8C66.3,52.4,62.4,50.1,58.1,48.8z M50,74.8  c2.8,0,5-2.2,5-5s-2.2-5-5-5c-2.8,0-5,2.2-5,5S47.2,74.8,50,74.8z M48,60.7h4c1,0,1.9-0.8,1.9-1.9l1-31.7c0-1.1-0.8-2-1.9-2h-5.9  c-1.1,0-1.9,0.9-1.9,2l0.9,31.7C46.1,59.9,47,60.7,48,60.7z"/><text x="0" y="115" fill="#000000" font-size="5px" font-weight="bold" font-family="'Helvetica Neue', Helvetica, Arial-Unicode, Arial, Sans-serif">Created by Gregor Cresnar</text><text x="0" y="120" fill="#000000" font-size="5px" font-weight="bold" font-family="'Helvetica Neue', Helvetica, Arial-Unicode, Arial, Sans-serif">from the Noun Project</text></svg>
+    </div>
     <script>
-        window.addEventListener("online", () => (window.location.href = "/"));
+        window.addEventListener("online", () => (window.location.href = "/app.html"));
     </script>
 </body>
 
