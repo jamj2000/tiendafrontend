@@ -1,6 +1,30 @@
-<script>
-  import { Link } from "svelte-routing";
-</script>
+<nav>
+  <ul class="menu">
+    <li class="logo">
+      <a href="/">
+        <span class="inicio">🛒</span>
+      </a>
+    </li>
+    <li class="item active">
+      <a href="/articulos">
+        <span class="articulos">🎁</span>
+      </a>
+    </li>
+    <li class="item active">
+      <a href="/clientes">
+        <span class="clientes">👥</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<!--
+<nav>
+  <a href="/">🛒 Inicio</a>
+  <a href="/articulos">🎁 Artículos</a>
+  <a href="/clientes">👥 Clientes</a>
+</nav>
+-->
 
 <style>
   /* Basic styling */
@@ -101,22 +125,4 @@
   }
 </style>
 
-<nav>
-  <ul class="menu">
-    <li class="logo">
-      <Link to="/">
-        <span class="inicio">🛒</span>
-      </Link>
-    </li>
-    <li class="item active">
-      <Link to="/articulos">
-        <span class="articulos">🎁</span>
-      </Link>
-    </li>
-    <li class="item active">
-      <Link to="/clientes">
-        <span class="clientes">👥</span>
-      </Link>
-    </li>
-  </ul>
-</nav>
+

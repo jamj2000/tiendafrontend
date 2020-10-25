@@ -1,30 +1,14 @@
 {
-  "name": "tiendafrontend",
-  "version": "1.0.0",
-  "description": "Frontend of a Fullstack webapp",
-  "keywords": [
-    "webapp",
-    "frontend",
-    "fullstack"
-  ],
-  "author": "jamj2000 at google dot com",
-  "license": "GPL",
-  "scripts": {
-    "build": "rollup -c",
-    "dev": "rollup -c -w",
-    "start": "sirv public --single"
-  },
-  "devDependencies": {
-    "@rollup/plugin-commonjs": "^11.0.0",
-    "@rollup/plugin-node-resolve": "^7.0.0",
-    "rollup": "^1.20.0",
-    "rollup-plugin-livereload": "^1.0.0",
-    "rollup-plugin-svelte": "^5.0.3",
-    "rollup-plugin-terser": "^5.1.2",
-    "svelte": "^3.0.0"
-  },
-  "dependencies": {
-    "sirv-cli": "^0.4.4",
-    "svelte-routing": "^1.4.0"
-  }
+	"name": "tiendafrontend",
+	"version": "0.0.1",
+	"scripts": {
+		"dev": "svelte dev",
+		"build": "svelte build"
+	},
+	"devDependencies": {
+		"@sveltejs/adapter-node": "0.0.7",
+		"@sveltejs/kit": "0.0.17",
+		"@sveltejs/snowpack-config": "^0.0.3",
+		"svelte": "^3.29.0"
+	}
 }

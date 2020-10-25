@@ -2,9 +2,9 @@
   import { onMount, getContext } from "svelte";
   import { jsonData }            from "./store.js";
 
-  import Buscar                  from "./Buscar.svelte";
-  import Cliente                 from "./Cliente.svelte";
-  import Boton                   from "./Boton.svelte";
+  import Buscar                  from "$components/Buscar.svelte";
+  import Cliente                 from "$components/Cliente.svelte";
+  import Boton                   from "$components/Boton.svelte";
 
   const URL = getContext("URL");
 
@@ -31,11 +31,16 @@
     align-items: center;
     justify-content: left;
     flex-wrap: wrap;
+    padding: 20px;
   }
 </style>
 
-<h1>CLIENTES</h1>
-<Buscar bind:busqueda />
+
+<div class="container">
+  <h1>CLIENTES</h1>
+  <p style="flex: 1"></p>
+  <Buscar bind:busqueda />
+</div>
 
 <div class="container">
   <Cliente bind:cliente>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<title>Tienda Frontend</title>
+	<link rel="icon" href="/favicon.png">
+	<meta charset="utf-8">
+
+	<meta name="description" content="Fullstack example">
+	<meta name="keywords" content="Frontend, PWA, Svelte, JavaScript">
+	<meta name="author" content="José Antonio Muñoz Jiménez">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- PWA: Para habilitar Progressive Web Application -->
+	<link rel="manifest" href="manifest.json">
+
+	<!-- PWA: Añadir a pantalla de inicio para Safari en iOS -->
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-title" content="Tienda">
+	<link rel="apple-touch-icon" sizes="152x152" href="/icons/icon-152x152.png">
+	<meta name="msapplication-TileImage" content="/icons/icon-144x144.png">
+	<meta name="msapplication-TileColor" content="#fdebc9">
+
+	<!-- PWA: Chrome, Firefox OS and Opera -->
+	<meta name="theme-color" content="#fdebc9">
+
+%svelte.head%
+</head>
+
+<body>
+  <noscript>
+	<p> Este sitio necesita Javascript para funcionar. </p>
+  </noscript>
+  <script>
+	// Si está soportado serviceWorker por el navegador
+	if ('serviceWorker' in navigator) {
+		window.addEventListener('load', () => {
+			navigator.serviceWorker
+				.register('./service-worker.js')
+				.then(reg => console.log('[Service Worker] * Registrado.'))
+				.catch(err => console.log(`[Service Worker] * Error: ${err}`));
+		});
+	}
+  </script>
+
+  <script src="service-worker.js"></script> <!-- Gestión de eventos del ServiceWorker -->
+
+%svelte.body%
+</body>
+</html>

@@ -886,7 +886,7 @@ Existen muchos sitios que ofrecen esta opción, Por ejemplo:
 
 - GitHub Pages
 - Netlify
-- Now (de [Zeit.co](https://zeit.co) )
+- Now (de [Vercel.com](https://vercel.com) )
 - Surge
 
 Para desarrolladores con poca experiencia, la forma más sencilla de despliegue es utilizar la interfaz web que proporcionan dichos sitios. 
