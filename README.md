@@ -2,7 +2,7 @@
 
 > **ESTE MINITUTORIAL ES UNA VERSIÓN RESUMIDA DEL FRONTEND DE ESTA APLICACIÓN**
 > 
-> **IMPORTANTE:** El código correspondiente a este minitutorial se encuentra en
+> **IMPORTANTE:** El código correspondiente de este minitutorial se encuentra en
 >   - https://github.com/jamj2000/tiendafrontend/tree/dcd45845ba4ac0ef9a2f0a67f789025184342fd4
 >
 > **El código actual de la rama master es EXPERIMENTAL**. En las próximas semanas, actualizaré el minitutorial conforme a ello.
