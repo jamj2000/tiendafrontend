@@ -1101,3 +1101,4 @@ Si pulsamos la tecla `F12` para mostrar las `Dev Tools` podremos ver una pestañ
 
 - [Tutorial y Ejemplos](https://svelte.dev/)
 - [Componentes Svelte](https://madewithsvelte.com/ui-library)
+- [Chat en Discord](https://discord.com/channels/457912077277855764/457912077277855766)
