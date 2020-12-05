@@ -1095,3 +1095,9 @@ Si pulsamos la tecla `F12` para mostrar las `Dev Tools` podremos ver una pestañ
 
 
 > NOTA: Algunas extensiones activas en el navegador pueden ralentizar las pruebas y provocar que el *score* obtenido sea menor. Para evitar esto podemos lanzar la auditoría desde el `modo incógnito` del navegador o, una solución más drástica, desactivar las extensiones.
+
+
+## Referencias
+
+- [Tutorial y Ejemplos](https://svelte.dev/)
+- [Componentes Svelte](https://madewithsvelte.com/ui-library)
