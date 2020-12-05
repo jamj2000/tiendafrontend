@@ -2,6 +2,8 @@
 
 > **ESTE MINITUTORIAL ES UNA VERSIÓN RESUMIDA DEL FRONTEND DE ESTA APLICACIÓN**
 > 
+> Demo desplegada en [now.sh](https://tiendafrontend.now.sh). Dashboard en [Vercel.com](https://vercel.com/dashboard)
+>
 > **IMPORTANTE:** El código correspondiente de este minitutorial se encuentra en
 >   - https://github.com/jamj2000/tiendafrontend/tree/dcd45845ba4ac0ef9a2f0a67f789025184342fd4
 >
