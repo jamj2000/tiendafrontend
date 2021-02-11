@@ -886,30 +886,28 @@ Existen muchos sitios que ofrecen esta opción, Por ejemplo:
 
 - GitHub Pages
 - Netlify
-- Now (de [Zeit.co](https://zeit.co) )
+- Vercel
 - Surge
 
 Para desarrolladores con poca experiencia, la forma más sencilla de despliegue es utilizar la interfaz web que proporcionan dichos sitios. 
 
-Pero si deseas realizar el despliegue mediante interfaz de texto, a continuación se muestra un resumen de cómo se realizaría con Now y con Surge.
+Pero si deseas realizar el despliegue mediante interfaz de texto, a continuación se muestra un resumen de cómo se realizaría con Vercel y con Surge.
 
 
-**Con [now](https://zeit.co/now)**
+**Con [vercel](https://vercel.com)**
 
-Instala `now` si aún no lo has hecho:
+Instala `vercel` si aún no lo has hecho:
 
 ```bash
-npm install -g now
+npm install -g vercel
 ```
 
 Luego, desde la carpeta de tu proyecto:
 
 ```bash
-cd  public
-now  deploy  --name my-project
+vercel login
+vercel --prod
 ```
-
-> NOTA: Sustituye *my-project* por el nombre de tu proyecto.
 
 
 **Con [surge](https://surge.sh/)**
