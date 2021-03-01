@@ -4,10 +4,8 @@
 > 
 > Demo desplegada en [now.sh](https://tiendafrontend.now.sh). Dashboard en [Vercel.com](https://vercel.com/dashboard)
 >
-> **IMPORTANTE:** El código correspondiente de este minitutorial se encuentra en
->   - https://github.com/jamj2000/tiendafrontend/tree/dcd45845ba4ac0ef9a2f0a67f789025184342fd4
 >
-> **El código actual de la rama master es EXPERIMENTAL**. En las próximas semanas, actualizaré el minitutorial conforme a ello.
+> **El código actual de la rama master es EXPERIMENTAL**. Este código puede desplegarse en un servidor local, pero los servidores de contenido estático (vercel, netlify, ...) aún no están preparados para su despliegue.
 >
 > A tener en cuenta:
 >
@@ -63,17 +61,19 @@ Proporcionando las siguientes ventajas:
 Un ventaja añadida es que su sintaxis es más simple, lo cual hace que su curva de aprendizaje sea menos pronunciada que la de otros frameworks. Por este motivo es un buen candidato para su uso con fines didácticos.
 
 
-## Inicio de un proyecto de svelte
+## Inicio de un proyecto de svelte@next
 
-Para iniciar un proyecto de svelte, ejecutamos:
+Para iniciar un proyecto de svelte@next, ejecutamos:
 
 ```console
-npx  degit  sveltejs/template   nombre-proyecto
+mkdir  nombre-proyecto  &&  cd  nombre-proyecto
+npm  init  svelte@next
+git  init
 ```
 
 > Nota: Sustituimos *nombre-proyecto* por el nombre concreto que queramos dar.
 
-Este comando descarga los archivos iniciales de un repositorio de github, en concreto desde [`https://github.com/sveltejs/template`](https://github.com/sveltejs/template). **Son sólo unos pocos KB**.
+Svelte requiere de muy poco almacenamiento. **Son sólo unos pocos KB**.
 
 > Nota: Como comparación frente a otros frameworks ...
 >
@@ -87,122 +87,56 @@ Este comando descarga los archivos iniciales de un repositorio de github, en con
 
 ## Examinar el proyecto creado
 
-Entramos en el directorio del proyecto, ejecutando:
-
-```console
-cd   nombre-proyecto  &&  ls 
-```
-
-> Nota: Sustituimos *nombre-proyecto* por el nombre concreto.
-
-Para ver todo el contenido podemos ejecutar el comando `tree`:
+Para ver todo el contenido podemos ejecutar el comando `tree -a  -I .git`:
 
 ```
+.
+├── .gitignore
 ├── package.json
-├── public
-│   ├── favicon.png
-│   ├── global.css
-│   └── index.html
 ├── README.md
-├── rollup.config.js
-└── src
-    ├── App.svelte
-    └── main.js
+├── snowpack.config.js
+├── src
+│   ├── app.html
+│   ├── components
+│   │   └── Counter.svelte
+│   └── routes
+│       └── index.svelte
+├── static
+│   ├── favicon.ico
+│   └── robots.txt
+└── svelte.config.js
 ```
 
 El archivo `package.json` es el archivo de gestión de proyecto y dependencias. En él. podremos editar el nombre del autor, la versión, el tipo de licencia, etc.
 
-La carpeta `public` contiene el frontend en forma de contenido estático, el cual deberemos subir a nuestro servidor de producción una vez finalizado el proyecto.
-
 El archivo `README.md` puede eliminarse o podemos editarlo a nuestro gusto. No es necesario para el funcionamiento de la aplicación, aunque pudiera ser interesante para fines de documentación.
 
-El archivo `rollup.config.js` contiene la configuración del empaquetador, que en este caso es **Rollup**. Otros frameworks utilizan otros empaquetadores como Webpack o Parcel. No debemos borrar este archivo. Tampoco lo editaremos, por ahora.
+El archivo `snowpack.config.js` contiene la configuración del empaquetador, que en este caso es **Snowpack**. Otros frameworks utilizan otros empaquetadores como Webpack o Parcel. No debemos borrar este archivo. Tampoco lo editaremos, por ahora.
 
-Finalmente, la carpeta `src` va a contener **nuestro código y todos los componentes web que vayamos creando**. Cada vez que realicemos un cambio en los archivos de dicha carpeta, rollup volverá a compilar y pondrá el resultado en `public/build/bundle.css` y `public/build/bundle.js`. 
+Finalmente, la carpeta `src` va a contener **nuestro código y todos los componentes web que vayamos creando**. Dentro hay 2 subcarpetas:
 
-El archivo `public/index.html` tiene enlaces a los anteriores. Su código es:
+- **routes**: contiene las rutas
+- **components**: contiene los componentes
+
+También hay un archivo `src/app.html` cuyo código es el siguiente:
 
 ```html
 <!DOCTYPE html>
 <html lang="en">
-<head>
-        <meta charset='utf-8'>
-        <meta name='viewport' content='width=device-width,initial-scale=1'>
-
-        <title>Svelte app</title>
-
-        <link rel='icon' type='image/png' href='/favicon.png'>
-        <link rel='stylesheet' href='/global.css'>  
-        <link rel='stylesheet' href='/build/bundle.css'> <!-- -->
-
-        <script defer src='/build/bundle.js'></script> <!-- -->
-</head>
-
-<body>
-</body>
+        <head>
+                <meta charset="utf-8" />
+                <link rel="icon" href="/favicon.ico" />
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
+                %svelte.head%
+        </head>
+        <body>
+                <div id="svelte">%svelte.body%</div>
+        </body>
 </html>
 ```
 
 ## Empezar a trabajar en el proyecto
 
-Abriremos nuestro editor favorito y comenzaremos a editar los archivos que están en la carpeta `src`.
-
-El contenido de los archivos `src/main.js` y `src/App.svelte` es el que se muestra a continuación:
-
-**`src/main.js`**
-
-```javascript
-import App from './App.svelte';
-
-const app = new App({
-        target: document.body,
-        props: {
-                name: 'world'
-        }
-});
-
-export default app;
-```
-
-La propiedad `name` tiene el valor `world`, y dicho valor es pasado al componente `src/App.svelte` a la variable del mismo nombre que tiene la palabra `export`. 
-
-Dentro de la sección de `html y componentes web` (en este caso `<main></main>`) podemos usar dicho valor. Por eso tenemos la línea `<h1>Hello {name}!</h1>`. 
-En dicha sección, las variables deben aparecer entre llaves {}.
-
-**`src/App.svelte`**
-
-```html
-<script>
-        export let name;
-</script>
-
-<main>
-        <h1>Hello {name}!</h1>
-        <p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
-</main>
-
-<style>
-        main {
-                text-align: center;
-                padding: 1em;
-                max-width: 240px;
-                margin: 0 auto;
-        }
-
-        h1 {
-                color: #ff3e00;
-                text-transform: uppercase;
-                font-size: 4em;
-                font-weight: 100;
-        }
-
-        @media (min-width: 640px) {
-                main {
-                        max-width: none;
-                }
-        }
-</style>
-```
 
 Para ejecutar la aplicación deberemos ejecutar:
 
@@ -218,26 +152,96 @@ Para instalar dichas dependencias, ejecutamos:
 npm  install
 ```
 
-Dicho comando, leerá el archivo `package.json`, e instalará todas las dependencias que aparecen ahí. Ahora ya podemos volver a ejecutar `npm  run  dev`.
+Dicho comando, leerá el archivo `package.json`, e instalará todas las dependencias que aparecen ahí en el directorio `node_modules`. Ahora ya podemos volver a ejecutar `npm  run  dev`.
 
-Podrás ver la aplicación en [localhost:5000](http://localhost:5000).
+Podrás ver la aplicación en [localhost:3000](http://localhost:3000).
 
 
 ## Simplificando antes de comenzar
 
-El archivo `src/main.js` podemos simplicarlo eliminando algunas líneas. Quedaría así:
+El archivo `src/components/Counter.svelte` contiene código de ejemplo. En nuestra aplicación no es necesario. Por tanto lo eliminaremos:
 
-```javascript
-import App from './App.svelte';
-
-const app = new App({ target: document.body });
-
-export default app;
+```bash
+rm  src/components/Counter.svelte
 ```
 
-Este archivo es el punto de entrada a la aplicación. Se genera un objeto `app` que se instancia a partir del componente `App.svelte`.  La propiedad `name` que hemos eliminado es la forma de pasar información desde *arriba* (`main.js`) hacia *abajo* (`App.svelte`).
+## Definiendo las rutas
 
-El componente `App.svelte` será el componente principal de la aplicación. Todo componente en svelte se nombra con la primera letra en mayúscula y la extensión .svelte.
+En el directorio **`src/routes`** crearemos 4 archivos:
+
+- **$layout.svelte**
+- **index.svelte** 
+- **articulos.svelte**
+- **clientes.svelte**
+
+
+El archivo **$layout.svelte** define la disposición de nuestra aplicación.
+
+```html
+<script>
+    import Nav from '$components/Nav.svelte';
+</script>
+
+<main>
+  <Nav />
+  <slot></slot>   <!-- IMPORTANTE -->
+
+  <!-- ... ver código fuente en GitHub  -->
+</main>
+
+<style>
+  /* ... ver código fuente en GitHub */
+</style>
+```
+
+El archivo **index.svelte** tiene el siguiente contenido:
+<script>
+        import Inicio from '$components/Inicio.svelte';
+</script>
+
+<Inicio />
+
+
+El archivo **articulos.svelte** tiene el siguiente contenido:
+
+<script>
+  import Articulos from '$components/Articulos.svelte';
+</script>
+
+<Articulos />
+
+
+El archivo **clientes.svelte** tiene el siguiente contenido:
+
+<script>
+  import Clientes from '$components/Clientes.svelte';
+</script>
+  
+<Clientes />
+
+
+
+
+## Definiendo los componentes
+
+Los componentes propiamente dichos están en la carpeta **`src/components`**
+
+Por ejemplo, el archivo **Nav.svelte** contiene la barra de navegación como puede verse a continuación:
+
+```html
+<nav>
+    <!-- ... ver código fuente en GitHub -->
+    <a href="/">🛒 Inicio</a>
+    <a href="/articulos">🎁 Artículos</a>
+    <a href="/clientes">👥 Clientes</a>
+</nav>
+
+<style>
+ /* ... ver código fuente en GitHub */
+</style>
+```
+
+**Todo componente en svelte se nombra con la primera letra en mayúscula y la extensión .svelte.**
 
 Cada componente dispone de 3 secciones:
 
@@ -246,11 +250,11 @@ Cada componente dispone de 3 secciones:
   // Código javascript
 </script>
 
+<!-- Nuestros elementos HTML y componentes web -->
+
 <style>
   /* Código CSS */
 </style>
-
-<!-- Nuestros elementos HTML y componentes web -->
 ```
 
 El orden es indiferente, aunque se recomienda organizar siguiendo el orden anterior.
@@ -397,13 +401,13 @@ El componente `Contenido` será la sección principal (`main`), con las rutas y 
 
 ## Componentes para el contenido
 
-Dentro del componente anterior `Contenido` podrán renderizarse distintos componentes, dependiendo del `Link` que pulsemos en la barra de navegación. Los componentes que podrán aparecer en `Contenido` son:
+Los 3 componentes principales son:
 
 - **Inicio**
 - **Artículos**
 - **Clientes**
 
-**`Inicio.svelte`**
+**`src/components/Inicio.svelte`**
 
 ```html
 <style>
@@ -419,7 +423,7 @@ Dentro del componente anterior `Contenido` podrán renderizarse distintos compon
 Este componente mostrará información acerca de la aplicación. Sólo posee código HTML y CSS. No necesita solicitar datos al servidor. Por tanto su carga es inmediata, y por este motivo lo mostraremos nada más iniciarse la aplicación. Ello permite una carga inicial de la aplicación instantánea.
 
 
-**`Articulos.svelte`**
+**`src/components/Articulos.svelte`**
 
 ![Articulos](articulos.png)
 
@@ -484,8 +488,7 @@ Este componente mostrará información acerca de la aplicación. Sólo posee có
 ```
 
 
-
-**`Clientes.svelte`**
+**`src/components/Clientes.svelte`**
 
 ![Clientes](clientes.png)
 
@@ -550,10 +553,9 @@ Este componente mostrará información acerca de la aplicación. Sólo posee có
 ```
 
 
-
 ## Otros componentes
 
-**`Articulo.svelte`**
+**`src/components/Articulo.svelte`**
 
 ```html
 <script>
@@ -577,9 +579,7 @@ Este componente mostrará información acerca de la aplicación. Sólo posee có
 </div>
 ```
 
-
-
-**`Cliente.svelte`**
+**`src/components/Cliente.svelte`**
 
 ```html
 <script>
@@ -598,10 +598,7 @@ Este componente mostrará información acerca de la aplicación. Sólo posee có
 </div>
 ```
 
-
-
-
-**`Boton.svelte`**
+**`src/components/Boton.svelte`**
 
 
 ```html
@@ -671,7 +668,7 @@ Este componente mostrará información acerca de la aplicación. Sólo posee có
 <button class={clases} on:click={handler} />
 ```
 
-**`Buscar.svelte`**
+**`svelte/components/Buscar.svelte`**
 
 ```html
 <script>
@@ -758,28 +755,32 @@ El valor de la propiedad `busqueda`, que será modificada desde el componente `B
 
 #### Ejemplo
 
-**`App.svelte`**
+**`src/routes/$layout.svelte`**
 
 ```html
 <script>
-  import { setContext } from "svelte";
-	
-  const urlArticulos = "https://tiendabackend.herokuapp.com/api/articulos/";
-
-  setContext("urlArticulos", urlArticulos);
-</script>	
+    import { setContext } from "svelte";
+    import Nav            from '$components/Nav.svelte';
+  
+    const URL = {
+      articulos :  "https://tiendabackend.herokuapp.com/api/articulos/",
+      clientes :   "https://tiendabackend.herokuapp.com/api/clientes/"
+    };
+  
+    setContext("URL", URL);
+</script>
 ```
 
-**`Boton.svelte`**
+**`src/components/Boton.svelte`**
 
 ```html
 <script>
   import { getContext } from "svelte";
 	
-  const urlArticulos = getContext("urlArticulos");
+  const URL = getContext("URL");
 	
   function obtener() {
-      fetch(urlArticulos, { method: "GET" })
+      fetch(URL.articulos, { method: "GET" })
       .then(res => res.json())
       .then(data => {  /* código para éxito */ })
       .catch(err => {  /* código para error */ });
@@ -796,7 +797,7 @@ El valor de la propiedad `busqueda`, que será modificada desde el componente `B
 
 #### Ejemplo
 
-**`store.js`**
+**`src/components/store.js`**
 
  ```javascript
 import { writable } from 'svelte/store';
@@ -807,14 +808,14 @@ export const jsonData = writable([]);
 Declaramos en `store.js` un array vacío, que contendrá datos en formato JSON.
 
 
-**`Articulos.svelte`**
+**`src/components/Articulos.svelte`**
 
 ```html
 <script>
  import { jsonData }   from "./store.js";
 	
  onMount(async () => {
-    const response = await fetch( urlArticulos );
+    const response = await fetch( URL.articulos );
     const data = await response.json();
     $jsonData = data;
   });
@@ -826,7 +827,7 @@ En el componente `Articulos.svelte` hacemos una petición **fetch** al servidor 
 **Nota:** Observa que para referirnos a la variable del almacén lo hacemos como **$jsonData**.
 
 
-**Boton.svelte**
+**`src/components/Boton.svelte`**
 
 ```html
 <script>
@@ -834,7 +835,7 @@ En el componente `Articulos.svelte` hacemos una petición **fetch** al servidor 
   export let documento = {};
 	
   function insertar() {
-      fetch(urlArticulos, {
+      fetch(URL.articulos, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(documento)
@@ -863,29 +864,22 @@ En el componente `Boton.svelte` insertamos un nuevo artículo en el servidor med
 Para crear una versión optimizada de la aplicación, ejecutamos:
 
 ```bash
-npm run build
+npm  run  build
 ```
 
-Puedes ejecutar la aplicación recién creada con `npm run start`. Esto utiliza [sirv](https://github.com/lukeed/sirv), que se incluye en las `dependencias` de `package.json` para que la aplicación funcione cuando se implemente en plataformas como [Heroku](https://heroku.com).
+Puedes ejecutar la aplicación recién creada con `npm run start`. 
 
 
 ## Single-Page App
 
 **Esta es una aplicación de página única (SPA)**.
 
-Por defecto, sirv solo responderá a las solicitudes que coincidan con los archivos en `public`. Esto es para maximizar la compatibilidad con los servidores de archivos estáticos, lo que le permite implementar su aplicación en cualquier lugar.
 
-Si estás creando una aplicación de una sola página (SPA) con varias rutas, sirv debe poder responder a las solicitudes de *cualquier* ruta. Puedes hacerlo editando el comando `"start"` en package.json:
-
-
-```js
-"start": "sirv public --single"
-```
-
-> NOTA: sirv es el módulo de node que permite ejecutar un servidor web y mostrar nuestra app.
 
 
 ## Despliegue en la web
+
+**AVISO: A día de hoy, los servidores que se proponen más abajo sólo soportan la versión anterior de Svelte. Por tanto, el despliegue en ellos de svelte@next no es posible por ahora.**
 
 Este frontend no contiene código de servidor, es decir, no contiene código para backend. Por tanto podemos desplegarlo como hariamos con cualquier página html. Cualquier sitio que permita **contenido estático** nos vale. 
 
@@ -898,22 +892,22 @@ Existen muchos sitios que ofrecen esta opción, Por ejemplo:
 
 Para desarrolladores con poca experiencia, la forma más sencilla de despliegue es utilizar la interfaz web que proporcionan dichos sitios. 
 
-Pero si deseas realizar el despliegue mediante interfaz de texto, a continuación se muestra un resumen de cómo se realizaría con Now y con Surge.
+Pero si deseas realizar el despliegue mediante interfaz de texto, a continuación se muestra un resumen de cómo se realizaría con Vercel y con Surge.
 
 
-**Con [now](https://zeit.co/now)**
+**Con [vercel](https://vercel.com)**
 
-Instala `now` si aún no lo has hecho:
+Instala `vercel` si aún no lo has hecho:
 
 ```bash
-npm install -g now
+npm install -g vercel
 ```
 
 Luego, desde la carpeta de tu proyecto:
 
 ```bash
-cd  public
-now  deploy  --name my-project
+vercel  login
+vercel  --prod
 ```
 
 > NOTA: Sustituye *my-project* por el nombre de tu proyecto.
@@ -964,11 +958,13 @@ Una PWA debe cumplir, en esencia, 2 requisitos:
 - Debe tener capacidad de funcionar **offline**. Para ello es necesario disponer de un *Service Worker*.
 
 
+**AVISO: Esta documentación que aparece a continuación necesita ser revisada. Por ahora no es fiable.** 
+
 Los archivos necesarios para hacer que una aplicación web sea progresiva son:
 
-- `public/manifest.json` 
-- `public/images/icons/*`  
-- `public/service-worker.js`   
+- `static/manifest.json` 
+- `static/images/icons/*`  
+- `static/service-worker.js`   
 
 Tanto el archivo `manifest.json` como la carpeta `images` y todos sus iconos, podemos generarlos de manera sencilla con [Web App Manifest Generator](https://app-manifest.firebaseapp.com/).
 
