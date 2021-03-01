@@ -10,7 +10,7 @@
 > A tener en cuenta:
 >
 > - Mucho del código que aparece en este minitutorial está simplificado con fines didácticos.
-> - Para ver todo el código fuente correspondiente, acceder a https://github.com/jamj2000/tiendafrontend/tree/dcd45845ba4ac0ef9a2f0a67f789025184342fd4
+>
 > - **La parte backend de esta aplicación puede verse en [tiendabackend](https://github.com/jamj2000/tiendabackend)**
 
 
