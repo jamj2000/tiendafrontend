@@ -10,7 +10,7 @@
 > A tener en cuenta:
 >
 > - Mucho del código que aparece en este minitutorial está simplificado con fines didácticos.
->
+> - El código fuente está disponible en https://github.com/jamj2000/tiendafrontend/tree/next
 > - **La parte backend de esta aplicación puede verse en [tiendabackend](https://github.com/jamj2000/tiendabackend)**
 
 
