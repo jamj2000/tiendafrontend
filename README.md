@@ -195,31 +195,34 @@ El archivo **$layout.svelte** define la disposición de nuestra aplicación.
 ```
 
 El archivo **index.svelte** tiene el siguiente contenido:
+
+```html
 <script>
-        import Inicio from '$components/Inicio.svelte';
+  import Inicio from '$components/Inicio.svelte';
 </script>
 
 <Inicio />
-
+```
 
 El archivo **articulos.svelte** tiene el siguiente contenido:
 
+```html
 <script>
   import Articulos from '$components/Articulos.svelte';
 </script>
 
 <Articulos />
-
+```
 
 El archivo **clientes.svelte** tiene el siguiente contenido:
 
+```html
 <script>
   import Clientes from '$components/Clientes.svelte';
 </script>
   
 <Clientes />
-
-
+```
 
 
 ## Definiendo los componentes
@@ -257,7 +260,7 @@ Cada componente dispone de 3 secciones:
 </style>
 ```
 
-El orden es indiferente, aunque se recomienda organizar siguiendo el orden anterior.
+Ninguna sección es obligatoria. El orden es indiferente, aunque se recomienda organizar siguiendo el orden anterior.
 
 En la sección de `script` escribiremos en Javascript la funcionalidad del componente.
 
@@ -265,141 +268,70 @@ En la sección de `style` escribiremos en CSS la presentación del componente.
 
 Y en la sección de `html y componentes web` escribiremos la estructura del componente. Para ello haremos uso de código html y ciertas extensiones de svelte que iremos viendo más adelante.
 
-Como este componente no va a recibir desde *arriba* la propiedad `name`, podemos eliminar la línea `export let name` que aparece en la sección de `script`.
 
-> **NOTA:** En svelte, cuando una variable tiene antepuesta la palabra `export` significa que a dicha variable puede pasársele un valor desde el componente que está encima en la jerarquía.
+## Diseñando la disposición (layout)
 
-
-Vamos a eliminar también el código CSS y reorganizar las secciones. Quedaría así:
-
+El código para la disposición de nuestra aplicación está en el archivo **`src/routes/$layout.svelte`**.
 
 ```html
 <script>
-
+    import { setContext } from "svelte";
+    import Nav            from '$components/Nav.svelte';
+  
+    const URL = {
+      articulos :  "https://tiendabackend.herokuapp.com/api/articulos/",
+      clientes :   "https://tiendabackend.herokuapp.com/api/clientes/"
+    };
+  
+    setContext("URL", URL);
 </script>
 
+<main>
+  <Nav />
+  <slot></slot>
+</main>
+
+<div id="OK">😊</div>
+<div id="KO">😟</div>
+
+  
 <style>
+@import url("https://fonts.googleapis.com/css?family=Aclonica");
 
-</style>
-
-<!-- Nuestros elementos HTML y componentes web -->
-```
-
-Sencillo, no?.  Ya podemos empezar.
-
-## Desarrollando nuestro primer componente
-
-Vamos a modificar el componente `App.svelte`, el cual habiamos vaciado anteriormente.
-
-![App](app.png)
-
-El contenido que tendrá sera el siguiente:
-
-```html
-<script>
-  import { Router } from "svelte-routing";
-  import Nav        from "./Nav.svelte";
-  import Contenido  from "./Contenido.svelte";
-</script>
-
-<style>
-  @import url("https://fonts.googleapis.com/css?family=Aclonica");
-
-  :global(*) {
+:global(body) {
     margin: 0;
     padding: 0;
-  }
-
-  :global(body) {
     display: flex;
     flex-direction: column;
     font-family: "Aclonica";
-  }
- 
-  :global(a:hover) {
+    font-display: swap;     /* Para mejorar rendimiento en carga inicial */
+}
+
+:global(*) {
+    margin: 0;
+    padding: 0;
+}
+
+:global(a:hover) {
     text-decoration: none;
     cursor: pointer;
-  }
+}
+
+:global(div#OK, div#KO) {
+    display: none;
+    position: fixed;
+    top: 60px;
+    right: 0px;
+    font-size: 60px;
+    background-color: transparent;
+}
 </style>
-
-<Router>
-  <Nav />
-  <Contenido />
-</Router>
 ```
-
-En la sección de `script` importamos los paquetes y componentes que vayamos a usar. En este caso importamos el componente `Router` que está en el paquete `svelte-routing`. Este paquete nos proporciona los componentes necesarios para crear enrutatodores (`Router`), enlaces (`Link`) y rutas (`Route`). Necesitaremos tener instalado dicho paquete, por lo que debemos ejecutar en el terminal:
-
-```console
-npm  install  svelte-routing
-```
-
-Vamos a importar también los componentes `Nav` y `Contenido`, que van a estar en la misma carpeta que `App`, y que vamos a crear el el siguiente apartado. Ahora mismo, para que no de error el compilador, podemos crear los 2 componentes vacíos o con algún mensaje en su interior.
 
 **En svelte los estilos CSS solamente se aplican al componente donde están definidos y a ningún otro componente, aunque tengan las mismas etiquetas**. Si queremos que una determinada etiqueta html tenga un estilo en todos los componentes usamos la forma `:global(etiqueta) { ... }` en lugar de `etiqueta {}` 
 
 
-La estructura del componente `App` está formada por un `Router`, dentro del cual se definen dos componentes: `Nav`, que tendrá los enlaces (`Link`) necesarios para la navegación, y `Contenido`, que tendrá las rutas (`Routes`) a los componentes necesarios.
-
-
-## Componentes de navegación y contenido
-
-Crearemos dos componentes llamados `Nav.svelte` y `Contenido.svelte`. Debe estar en la misma carpeta que el componente `App.svelte`.
-
-**`Nav.svelte`**
-
-```html
-<script>
-  import { Link } from "svelte-routing";
-
-  // Aquí el código javascript para añadir funcionalidad a la barra de navegación.
-  // Consultar el código fuente.
-
-</script>
-
-<style>
-  /* Aquí el código CSS para diseño responsive de la barra de navegación. */
-  /* Consultar el código fuente */
-</style>
-
-<nav> 
-  <!-- Se eliminan etiquetas html para resaltar lo esencial -->
-  <!-- Consulta el código fuente. -->       
-  <Link to="/">Inicio</Link>
-  <Link to="/articulos">Artículos</Link>
-  <Link to="/clientes">Clientes</Link>
-</nav>
-```
-
-El componente `Nav` será la barra de navegación (`nav`), con los enlaces a las rutas del lado cliente. Para los enlaces hacemos uso del componente `Link` del paquete `svelte-routing`.
-
-**`Contenido.svelte`**
-
-```html
-<script>
-  import { Route } from "svelte-routing";
-  import Inicio from "./Inicio.svelte";
-  import Articulos from "./Articulos.svelte";
-  import Clientes from "./Clientes.svelte";
-</script>
-
-<style>
-  /* Aquí el código CSS */
-  /* Consultar el código fuente */
-</style>
-
-<main>
-  <!-- Se eliminan etiquetas html para resaltar lo esencial -->
-  <!-- Consulta el código fuente. --> 
-  <Route path="/" component={Inicio} />
-  <Route path="/articulos" component={Articulos} />
-  <Route path="/clientes" component={Clientes} />
-</main>
-```
-
-El componente `Contenido` será la sección principal (`main`), con las rutas y el componente asociado a cada una de ellas. Para las rutas hacemos uso del componente `Route` del paquete `svelte-routing`.
-
-## Componentes para el contenido
+## Componentes principales
 
 Los 3 componentes principales son:
 
@@ -681,6 +613,8 @@ Este componente mostrará información acerca de la aplicación. Sólo posee có
 </label>
 ```
 
+> **NOTA:** En svelte, cuando una variable tiene antepuesta la palabra `export` significa que a dicha variable (en este caso se le llama propiedad) puede pasársele un valor desde el componente que está encima en la jerarquía, es decir desde el componente padre.
+
 
 ### Similitud entre *elementos html* y *componentes web*
 
@@ -743,7 +677,6 @@ Si deseamos que el hijo (`Buscar`) pueda pasar información al padre (`Articulos
 ```
 
 El valor de la propiedad `busqueda`, que será modificada desde el componente `Buscar`, "subirá" hasta la variable `texto` del componente `Articulos`.
-
 
 
 ### Contextos (setContext / getContext)
