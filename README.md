@@ -899,7 +899,7 @@ Pero si deseas realizar el despliegue mediante interfaz de texto, a continuació
 Instala `vercel` si aún no lo has hecho:
 
 ```bash
-npm install -g vercel
+sudo  npm install -g vercel
 ```
 
 Luego, desde la carpeta de tu proyecto:
