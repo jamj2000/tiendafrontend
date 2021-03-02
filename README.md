@@ -915,7 +915,7 @@ vercel --prod
 Instala `surge` si aún no lo has hecho:
 
 ```bash
-npm install -g surge
+sudo  npm install -g surge
 ```
 
 Luego, desde la carpeta de tu proyecto:
