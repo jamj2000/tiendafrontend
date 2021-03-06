@@ -1,11 +1,11 @@
-# FRONTEND (con Svelte)
+# FRONTEND (con svelte@next)
 
 > **ESTE MINITUTORIAL ES UNA VERSIÓN RESUMIDA DEL FRONTEND DE ESTA APLICACIÓN**
 > 
-> Demo desplegada en [now.sh](https://tiendafrontend.now.sh). Dashboard en [Vercel.com](https://vercel.com/dashboard)
+> Demo desplegada en [netlify](https://tiendanext.netlify.app). 
 >
 >
-> **El código actual de la rama master es EXPERIMENTAL**. Este código puede desplegarse en un servidor local, la mayoría de servidores de contenido estático (vercel, ...) aún no están preparados para su despliegue.
+> **El código actual de esta rama es EXPERIMENTAL**. Este código puede desplegarse en un servidor local, la mayoría de servidores de contenido estático (vercel, ...) aún no están preparados para su despliegue.
 >
 > **PARA EL DESPLIEGUE EN NETLIFY: Consultar https://www.youtube.com/watch?v=sdecXEiPUBM**
 >
@@ -96,7 +96,7 @@ Para ver todo el contenido podemos ejecutar el comando `tree -a  -I .git`:
 ├── .gitignore
 ├── package.json
 ├── README.md
-├── snowpack.config.js
+├── snowpack.config.js ( o vite.config.js )
 ├── src
 │   ├── app.html
 │   ├── components
@@ -106,14 +106,14 @@ Para ver todo el contenido podemos ejecutar el comando `tree -a  -I .git`:
 ├── static
 │   ├── favicon.ico
 │   └── robots.txt
-└── svelte.config.js
+└── svelte.config.js ( o svelte.config.js )
 ```
 
 El archivo `package.json` es el archivo de gestión de proyecto y dependencias. En él. podremos editar el nombre del autor, la versión, el tipo de licencia, etc.
 
 El archivo `README.md` puede eliminarse o podemos editarlo a nuestro gusto. No es necesario para el funcionamiento de la aplicación, aunque pudiera ser interesante para fines de documentación.
 
-El archivo `snowpack.config.js` contiene la configuración del empaquetador, que en este caso es **Snowpack**. Otros frameworks utilizan otros empaquetadores como Webpack o Parcel. No debemos borrar este archivo. Tampoco lo editaremos, por ahora.
+El archivo `snowpack.config.js` o `vite.config.js` contiene la configuración del empaquetador, que en este caso es **Snowpack** o **Vite**. Aún está en proceso de definición. Otros frameworks utilizan otros empaquetadores como Webpack o Parcel. No debemos borrar este archivo. Tampoco lo editaremos, por ahora.
 
 Finalmente, la carpeta `src` va a contener **nuestro código y todos los componentes web que vayamos creando**. Dentro hay 2 subcarpetas:
 
