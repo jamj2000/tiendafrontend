@@ -106,7 +106,7 @@ Para ver todo el contenido podemos ejecutar el comando `tree -a  -I .git`:
 ├── static
 │   ├── favicon.ico
 │   └── robots.txt
-└── svelte.config.js ( o svelte.config.js )
+└── svelte.config.js ( o svelte.config.cjs )
 ```
 
 El archivo `package.json` es el archivo de gestión de proyecto y dependencias. En él. podremos editar el nombre del autor, la versión, el tipo de licencia, etc.
