@@ -5,9 +5,11 @@
 > Demo desplegada en [now.sh](https://tiendafrontend.now.sh). Dashboard en [Vercel.com](https://vercel.com/dashboard)
 >
 >
-> **El código actual de la rama master es EXPERIMENTAL**. Este código puede desplegarse en un servidor local, pero los servidores de contenido estático (vercel, netlify, ...) aún no están preparados para su despliegue.
+> **El código actual de la rama master es EXPERIMENTAL**. Este código puede desplegarse en un servidor local, la mayoría de servidores de contenido estático (vercel, ...) aún no están preparados para su despliegue.
 >
-> A tener en cuenta:
+> **PARA EL DESPLIEGUE EN NETLIFY: Consultar https://www.youtube.com/watch?v=sdecXEiPUBM**
+>
+> A tener en cuenta: 
 >
 > - Mucho del código que aparece en este minitutorial está simplificado con fines didácticos.
 > - El código fuente está disponible en https://github.com/jamj2000/tiendafrontend/tree/next

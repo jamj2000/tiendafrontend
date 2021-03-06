@@ -24,7 +24,7 @@
 	<!-- PWA: Chrome, Firefox OS and Opera -->
 	<meta name="theme-color" content="#fdebc9">
 
-%svelte.head%
+       %svelte.head%
 </head>
 
 <body>
@@ -45,6 +45,7 @@
 
   <script src="service-worker.js"></script> <!-- Gestión de eventos del ServiceWorker -->
 
-%svelte.body%
+  <div id="svelte">%svelte.body%</div>
+
 </body>
 </html>
