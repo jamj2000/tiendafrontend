@@ -963,6 +963,8 @@ Los archivos necesarios para hacer que una aplicación web sea progresiva son:
 
 Tanto el archivo `manifest.json` como la carpeta `images` y todos sus iconos, podemos generarlos de manera sencilla con [Web App Manifest Generator](https://app-manifest.firebaseapp.com/).
 
+![App Manifest Generator](app-manifest-generator.png)
+
 El archivo `service-worker.js` se encarga de funcionar como intermediario entre nuestro frontend y el backend, y tiene la siguiente apariencia:
 
 ```javascript
