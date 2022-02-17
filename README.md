@@ -891,8 +891,8 @@ Existen muchos sitios que ofrecen esta opción, Por ejemplo:
 
 Para desarrolladores con poca experiencia, la forma más sencilla de despliegue es utilizar la interfaz web que proporcionan dichos sitios. 
 
-Pero si deseas realizar el despliegue mediante interfaz de texto, a continuación se muestra un resumen de cómo se realizaría con Vercel y con Surge.
-
+Pero si deseas realizar el despliegue mediante interfaz de texto, a continuación se muestra un resumen de cómo se realizaría con Vercel, Surge y Netlify.
+Previamente deberás haberte registrado en dichos sitios. 
 
 **Con [vercel](https://vercel.com)**
 
@@ -908,6 +908,8 @@ Luego, desde la carpeta de tu proyecto:
 vercel login
 vercel --prod
 ```
+
+> NOTA: Sigue el asistente que aparece. 
 
 
 **Con [surge](https://surge.sh/)**
@@ -926,6 +928,24 @@ surge  public  my-project.surge.sh
 ```
 
 > NOTA: Sustituye *my-project* por el nombre de tu proyecto.
+
+
+**Con [netlify](https://netlify.com/)**
+
+Instala `netlify-cli` si aún no lo has hecho:
+
+```bash
+sudo  npm install -g netlify-cli
+```
+
+Luego, desde la carpeta de tu proyecto:
+
+```bash
+npm  run  build
+netlify deploy --dir public --prod  
+```
+
+> NOTA: Sigue el asistente que aparece.
 
 
 ## Progressive Web Application
