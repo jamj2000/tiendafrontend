@@ -2,6 +2,26 @@
   import { Link } from "svelte-routing";
 </script>
 
+<nav>
+  <ul class="menu">
+    <li class="logo">
+      <Link to="/">
+        <span class="inicio">🛒</span>
+      </Link>
+    </li>
+    <li class="item active">
+      <Link to="/articulos">
+        <span class="articulos">🎁</span>
+      </Link>
+    </li>
+    <li class="item active">
+      <Link to="/clientes">
+        <span class="clientes">👥</span>
+      </Link>
+    </li>
+  </ul>
+</nav>
+
 <style>
   /* Basic styling */
   * {
@@ -100,23 +120,3 @@
     }
   }
 </style>
-
-<nav>
-  <ul class="menu">
-    <li class="logo">
-      <Link to="/">
-        <span class="inicio">🛒</span>
-      </Link>
-    </li>
-    <li class="item active">
-      <Link to="/articulos">
-        <span class="articulos">🎁</span>
-      </Link>
-    </li>
-    <li class="item active">
-      <Link to="/clientes">
-        <span class="clientes">👥</span>
-      </Link>
-    </li>
-  </ul>
-</nav>

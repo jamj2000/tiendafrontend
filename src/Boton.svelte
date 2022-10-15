@@ -88,6 +88,8 @@
   }
 </script>
 
+<button class={clases} on:click={handler} />
+
 <style>
   .btn {
     font-weight: bold;
@@ -160,4 +162,3 @@
   }
 </style>
 
-<button class={clases} on:click={handler} />

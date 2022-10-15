@@ -24,16 +24,6 @@
 
 </script>
 
-<style>
-  .container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: left;
-    flex-wrap: wrap;
-  }
-</style>
-
 <h1>CLIENTES</h1>
 <Buscar bind:busqueda />
 
@@ -55,3 +45,13 @@
     </Cliente>
   {/each}
 </div>
+
+<style>
+  .container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+    flex-wrap: wrap;
+  }
+</style>

@@ -12,6 +12,14 @@
   setContext("URL", URL);
 </script>
 
+<Router>
+  <Nav />
+  <Contenido />
+</Router>
+<div id="OK">😊</div>
+<div id="KO">😟</div>
+
+
 <style>
   @import url("https://fonts.googleapis.com/css?family=Aclonica");
 
@@ -43,10 +51,3 @@
     background-color: transparent;
   }
 </style>
-
-<Router>
-  <Nav />
-  <Contenido />
-</Router>
-<div id="OK">😊</div>
-<div id="KO">😟</div>

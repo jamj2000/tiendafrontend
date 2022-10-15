@@ -4,6 +4,12 @@
   export let cliente = {};
 </script>
 
+<div class="card" on:click>
+  <input bind:value={cliente.nombre} class="title" />
+  <input bind:value={cliente.apellidos} class="title" />
+  <slot />
+</div>
+
 <style>
   .title {
     font-weight: bold;
@@ -46,9 +52,3 @@
     background-color: lightpink;
   }
 </style>
-
-<div class="card" on:click>
-  <input bind:value={cliente.nombre} class="title" />
-  <input bind:value={cliente.apellidos} class="title" />
-  <slot />
-</div>

@@ -5,15 +5,15 @@
   import Clientes   from "./Clientes.svelte";
 </script>
 
+<main id="contenido">
+  <Route path="/" component={Inicio} />
+  <Route path="/articulos" component={Articulos} />
+  <Route path="/clientes" component={Clientes} />
+</main>
+
 <style>
   main {
     padding: 20px;
     padding-top: 50px;
   }
 </style>
-
-<main id="contenido">
-  <Route path="/" component={Inicio} />
-  <Route path="/articulos" component={Articulos} />
-  <Route path="/clientes" component={Clientes} />
-</main>
