@@ -239,20 +239,20 @@ Cada componente dispone de 3 secciones:
   // Código javascript
 </script>
 
+<!-- Nuestros elementos HTML y componentes web -->
+
 <style>
   /* Código CSS */
 </style>
-
-<!-- Nuestros elementos HTML y componentes web -->
 ```
 
 El orden es indiferente, aunque se recomienda organizar siguiendo el orden anterior.
 
 En la sección de `script` escribiremos en Javascript la funcionalidad del componente.
 
-En la sección de `style` escribiremos en CSS la presentación del componente.
+En la sección de `html y componentes web` escribiremos la estructura del componente. Para ello haremos uso de código html y ciertas extensiones de svelte que iremos viendo más adelante.
 
-Y en la sección de `html y componentes web` escribiremos la estructura del componente. Para ello haremos uso de código html y ciertas extensiones de svelte que iremos viendo más adelante.
+Y en la sección de `style` escribiremos en CSS la presentación del componente.
 
 Como este componente no va a recibir desde *arriba* la propiedad `name`, podemos eliminar la línea `export let name` que aparece en la sección de `script`.
 
@@ -267,11 +267,11 @@ Vamos a eliminar también el código CSS y reorganizar las secciones. Quedaría 
 
 </script>
 
+<!-- Nuestros elementos HTML y componentes web -->
+
 <style>
 
 </style>
-
-<!-- Nuestros elementos HTML y componentes web -->
 ```
 
 Sencillo, no?.  Ya podemos empezar.
@@ -290,6 +290,11 @@ El contenido que tendrá sera el siguiente:
   import Nav        from "./Nav.svelte";
   import Contenido  from "./Contenido.svelte";
 </script>
+
+<Router>
+  <Nav />
+  <Contenido />
+</Router>
 
 <style>
   @import url("https://fonts.googleapis.com/css?family=Aclonica");
@@ -310,11 +315,6 @@ El contenido que tendrá sera el siguiente:
     cursor: pointer;
   }
 </style>
-
-<Router>
-  <Nav />
-  <Contenido />
-</Router>
 ```
 
 En la sección de `script` importamos los paquetes y componentes que vayamos a usar. En este caso importamos el componente `Router` que está en el paquete `svelte-routing`. Este paquete nos proporciona los componentes necesarios para crear enrutatodores (`Router`), enlaces (`Link`) y rutas (`Route`). Necesitaremos tener instalado dicho paquete, por lo que debemos ejecutar en el terminal:
@@ -346,11 +346,6 @@ Crearemos dos componentes llamados `Nav.svelte` y `Contenido.svelte`. Debe estar
 
 </script>
 
-<style>
-  /* Aquí el código CSS para diseño responsive de la barra de navegación. */
-  /* Consultar el código fuente */
-</style>
-
 <nav> 
   <!-- Se eliminan etiquetas html para resaltar lo esencial -->
   <!-- Consulta el código fuente. -->       
@@ -358,6 +353,11 @@ Crearemos dos componentes llamados `Nav.svelte` y `Contenido.svelte`. Debe estar
   <Link to="/articulos">Artículos</Link>
   <Link to="/clientes">Clientes</Link>
 </nav>
+
+<style>
+  /* Aquí el código CSS para diseño responsive de la barra de navegación. */
+  /* Consultar el código fuente */
+</style>
 ```
 
 El componente `Nav` será la barra de navegación (`nav`), con los enlaces a las rutas del lado cliente. Para los enlaces hacemos uso del componente `Link` del paquete `svelte-routing`.
@@ -372,11 +372,6 @@ El componente `Nav` será la barra de navegación (`nav`), con los enlaces a las
   import Clientes from "./Clientes.svelte";
 </script>
 
-<style>
-  /* Aquí el código CSS */
-  /* Consultar el código fuente */
-</style>
-
 <main>
   <!-- Se eliminan etiquetas html para resaltar lo esencial -->
   <!-- Consulta el código fuente. --> 
@@ -384,6 +379,11 @@ El componente `Nav` será la barra de navegación (`nav`), con los enlaces a las
   <Route path="/articulos" component={Articulos} />
   <Route path="/clientes" component={Clientes} />
 </main>
+
+<style>
+  /* Aquí el código CSS */
+  /* Consultar el código fuente */
+</style>
 ```
 
 El componente `Contenido` será la sección principal (`main`), con las rutas y el componente asociado a cada una de ellas. Para las rutas hacemos uso del componente `Route` del paquete `svelte-routing`.
@@ -399,14 +399,14 @@ Dentro del componente anterior `Contenido` podrán renderizarse distintos compon
 **`Inicio.svelte`**
 
 ```html
+<h1>Tienda PWA</h1>
+  <!-- Se eliminan etiquetas html para resaltar lo esencial -->
+  <!-- Consulta el código fuente. --> 
+  
 <style>
   /* Aquí el código CSS */
   /* Consultar el código fuente */
 </style>
-
-<h1>Tienda PWA</h1>
-  <!-- Se eliminan etiquetas html para resaltar lo esencial -->
-  <!-- Consulta el código fuente. --> 
 ```
 
 Este componente mostrará información acerca de la aplicación. Sólo posee código HTML y CSS. No necesita solicitar datos al servidor. Por tanto su carga es inmediata, y por este motivo lo mostraremos nada más iniciarse la aplicación. Ello permite una carga inicial de la aplicación instantánea.
@@ -443,16 +443,6 @@ Este componente mostrará información acerca de la aplicación. Sólo posee có
 
 </script>
 
-<style>
-  .container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: left;
-    flex-wrap: wrap;
-  }
-</style>
-
 <h1>ARTÍCULOS</h1>
 <Buscar bind:busqueda />
 
@@ -474,6 +464,16 @@ Este componente mostrará información acerca de la aplicación. Sólo posee có
     </Articulo>
   {/each}
 </div>
+
+<style>
+  .container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+    flex-wrap: wrap;
+  }
+</style>
 ```
 
 
@@ -509,16 +509,6 @@ Este componente mostrará información acerca de la aplicación. Sólo posee có
 
 </script>
 
-<style>
-  .container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: left;
-    flex-wrap: wrap;
-  }
-</style>
-
 <h1>CLIENTES</h1>
 <Buscar bind:busqueda />
 
@@ -540,6 +530,16 @@ Este componente mostrará información acerca de la aplicación. Sólo posee có
     </Cliente>
   {/each}
 </div>
+
+<style>
+  .container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+    flex-wrap: wrap;
+  }
+</style>
 ```
 
 
@@ -553,11 +553,6 @@ Este componente mostrará información acerca de la aplicación. Sólo posee có
   export let articulo = {};
 </script>
 
-<style>
-   /* Aquí el código CSS */
-  /* Consultar el código fuente */
-</style>
-
 <div class="card">
   <input bind:value={articulo.nombre} class="title" />
   <input
@@ -568,6 +563,11 @@ Este componente mostrará información acerca de la aplicación. Sólo posee có
     bind:value={articulo.precio} />  €
   <slot />
 </div>
+
+<style>
+   /* Aquí el código CSS */
+  /* Consultar el código fuente */
+</style>
 ```
 
 
@@ -579,16 +579,16 @@ Este componente mostrará información acerca de la aplicación. Sólo posee có
   export let cliente = {};
 </script>
 
-<style>
-  /* Aquí el código CSS */
-  /* Consultar el código fuente */
-</style>
-
 <div class="card">
   <input bind:value={cliente.nombre} class="title" />
   <input bind:value={cliente.apellidos} class="title" />
   <slot />
 </div>
+
+<style>
+  /* Aquí el código CSS */
+  /* Consultar el código fuente */
+</style>
 ```
 
 
@@ -656,11 +656,6 @@ Este componente mostrará información acerca de la aplicación. Sólo posee có
   // Consultar el código fuente
 </script>
 
-<style>
-  /* Aquí el código CSS */
-  /* Consultar el código fuente */
-</style>
-
 <button class={clases} on:click={handler} />
 ```
 
@@ -675,6 +670,11 @@ Este componente mostrará información acerca de la aplicación. Sólo posee có
   Buscar
   <input bind:value={busqueda} type="search" />
 </label>
+
+<style>
+  /* Aquí el código CSS */
+  /* Consultar el código fuente */
+</style>
 ```
 
 
