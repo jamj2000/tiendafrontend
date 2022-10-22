@@ -42,11 +42,12 @@
       Object.keys(documento).length > 1 &&
       Object.values(documento).every(x => x !== undefined && x != "")
     ) {
-      fetch(url, {
+      let opciones = {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(documento)
-      })
+      }
+      fetch(url, opciones)
         .then(res => res.json())
         .then(data => {
           $jsonData = [...$jsonData, data];
@@ -57,18 +58,20 @@
   }
 
   function modificar() {
-    fetch(url + documento._id, {
+    let opciones =  {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(documento)
-    })
+    } 
+    fetch(url + documento._id, opciones)
       .then(res => res.json())
       .then(data => ok())
       .catch(err => ko());
   }
 
   function eliminar() {
-    fetch(url + documento._id, { method: "DELETE" })
+    let opciones =  { method: "DELETE" }
+    fetch(url + documento._id, opciones)
       .then(res => res.json())
       .then(data => {
         $jsonData = $jsonData.filter(x => x._id !== data._id);
