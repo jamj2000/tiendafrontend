@@ -5,8 +5,8 @@
   import Contenido      from "./Contenido.svelte";
   
   const URL = {
-    articulos :  "https://tiendabackend.herokuapp.com/api/articulos/",
-    clientes :   "https://tiendabackend.herokuapp.com/api/clientes/"
+    articulos :  "https://tiendabackend.up.railway.app/api/articulos/",
+    clientes :   "https://tiendabackend.up.railway.app/api/clientes/"
   };
 
   setContext("URL", URL);
