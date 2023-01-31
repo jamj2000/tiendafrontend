@@ -5,8 +5,8 @@
   import Contenido      from "./Contenido.svelte";
   
   const URL = {
-    articulos :  "https://tiendabackend.up.railway.app/api/articulos/",
-    clientes :   "https://tiendabackend.up.railway.app/api/clientes/"
+    articulos :  "https://tiendabackend.onrender.com/api/articulos/",
+    clientes :   "https://tiendabackend.onrender.com/api/clientes/"
   };
 
   setContext("URL", URL);
