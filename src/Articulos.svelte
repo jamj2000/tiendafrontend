@@ -17,10 +17,13 @@
     $jsonData = data;
   });
 
-  $: regex = new RegExp(busqueda, "i");
-  $: datos = busqueda 
-    ? $jsonData.filter(item => regex.test(item.nombre))
-    : $jsonData;
+  $: datos = $jsonData.filter ( item => RegExp(busqueda, "i").test(item.nombre)) 
+  
+  // Una forma más complicada de hacer lo anterior
+  // $: regex = new RegExp(busqueda, "i");
+  // $: datos = busqueda 
+  //  ? $jsonData.filter(item => regex.test(item.nombre))
+  //  : $jsonData;
 
 </script>
 
