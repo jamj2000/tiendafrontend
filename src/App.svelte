@@ -5,8 +5,8 @@
   import Contenido      from "./Contenido.svelte";
   
   const URL = {
-    articulos :  "https://tiendabackend.onrender.com/api/articulos/",
-    clientes :   "https://tiendabackend.onrender.com/api/clientes/"
+    articulos :  "https://tiendabackend.fly.dev/api/articulos/",
+    clientes :   "https://tiendabackend.fly.dev/api/clientes/"
   };
 
   setContext("URL", URL);
