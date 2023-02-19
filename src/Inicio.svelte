@@ -11,8 +11,8 @@
 <p>
   <small>
     Backend en
-    <a href="https://tiendabackend.herokuapp.com">
-      https://tiendabackend.herokuapp.com
+    <a href="https://tiendabackend.fly.dev">
+      https://tiendabackend.fly.dev
     </a>
   </small>
 </p>
