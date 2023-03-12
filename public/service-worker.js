@@ -3,7 +3,7 @@
 
 
 // Nombre de la caché
-const CACHE_NAME = 'tiendapwa-v1';
+const CACHE_NAME = 'tiendapwa-v2';
 
 // Archivos necesarios para el funcionamiento offline
 const CACHE_ASSETS = [
@@ -14,8 +14,6 @@ const CACHE_ASSETS = [
   '/global.css',
   '/build/bundle.css',
   '/build/bundle.js',
-  '/build/bundle.css.map',
-  '/build/bundle.js.map',
   '/images/icons/icon-512x512.png',
   '/assets/menu.svg',
   '/assets/cerrar.svg'
